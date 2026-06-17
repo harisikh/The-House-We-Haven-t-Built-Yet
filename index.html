@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The House We Haven't Built Yet ♥️</title>
+<meta name="description" content="A house that doesn't exist yet. For Bebu.">
+<meta name="theme-color" content="#E7DECC">
+<meta property="og:title" content="The House We Haven't Built Yet ♥️">
+<meta property="og:description" content="A house that doesn't exist yet. For Bebu.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F8F3EA'/%3E%3Cpath d='M6 15L16 7l10 8' fill='none' stroke='%232C2419' stroke-width='2' stroke-linejoin='round'/%3E%3Crect x='9' y='15' width='14' height='10' fill='none' stroke='%232C2419' stroke-width='2'/%3E%3Cpath d='M16 22.5c-1.6-1.6-3-2.6-3-4 0-1 .8-1.6 1.6-1.6.7 0 1.1.4 1.4.8.3-.4.7-.8 1.4-.8.8 0 1.6.6 1.6 1.6 0 1.4-1.4 2.4-3 4z' fill='%23AE5232'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/blueprint.css">
+<link rel="stylesheet" href="css/rooms.css">
+<link rel="stylesheet" href="css/enhance.css">
+<link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+<div id="tod-veil" aria-hidden="true"></div>
+<div id="lamp" aria-hidden="true"></div>
+
+<!-- ══════════ FIRST-OPEN CEREMONY ══════════ -->
+<div id="ceremony" aria-hidden="true">
+  <div class="cer-inner">
+    <svg class="cer-border" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+      <rect class="cer-frame" x="3" y="3" width="394" height="294" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <div class="cer-content">
+      <div class="cer-sub">Drawing up the plans…</div>
+      <h1 class="cer-title">The House We<br>Haven't Built Yet</h1>
+      <div class="cer-stamp">Sealed<br>for Bebu</div>
+    </div>
+    <button class="cer-skip" id="cer-skip">Skip</button>
+  </div>
+</div>
+
+<div class="tod-badge" id="tod-badge"><span class="tod-dot"></span><span id="tod-label">—</span></div>
+
+<div id="app">
+
+<!-- ══════════ LOCK ══════════ -->
+<section id="screen-lock" class="screen">
+  <div class="sheet center narrow stagger">
+    <div class="eyebrow" style="justify-content:center"><span class="tick"></span><span class="stencil">Under Construction</span><span class="tick"></span></div>
+    <h1 class="h-lg" style="margin-bottom:var(--s5)">The House We<br>Haven't Built Yet <span class="a-heart" style="color:var(--terra)">♥️</span></h1>
+    <p class="body" style="margin-bottom:var(--s5)">This house is still under construction.</p>
+    <p class="body">Please come back on:</p>
+    <p class="serif-italic" style="font-size:var(--t-2xl);color:var(--ink);margin:var(--s4) 0">27 June 2026 &nbsp;·&nbsp; 12:00 AM</p>
+    <div id="lock-countdown" class="hand-lg" style="color:var(--terra);font-size:var(--t-3xl);margin:var(--s4) 0">—</div>
+    <div class="rule"></div>
+    <p id="lock-message" class="hand-sm serif-italic" style="font-family:var(--hand);font-size:var(--t-lg)">P.S. This lock exists because somebody is incapable of keeping surprises to himself.</p>
+  </div>
+</section>
+
+<!-- ══════════ OPENING ══════════ -->
+<section id="screen-opening" class="screen">
+  <div class="sheet center stagger">
+    <div class="eyebrow" style="justify-content:center"><span class="tick"></span><span class="stencil">A gift · for Bebu</span><span class="tick"></span></div>
+    <h1 class="display" style="margin-bottom:var(--s2)">The House<br>We Haven't<br>Built Yet <span class="a-heart" style="color:var(--terra);font-size:0.7em">♥️</span></h1>
+    <div class="rule"></div>
+    <p class="hand" style="font-size:var(--t-xl);line-height:1.9;color:var(--ink-faint);margin-bottom:var(--s7)">
+      No address.<br>No walls.<br>Just a future I've been accidentally thinking about a lot.
+    </p>
+    <button class="btn" id="btn-keys"><span>Take the Keys</span><span class="arrow">→</span></button>
+    <p class="opening-note" id="opening-note"></p>
+    <div class="folio">Sheet 00 · Cover</div>
+  </div>
+</section>
+
+<!-- ══════════ KEYS ══════════ -->
+<section id="screen-keys" class="screen">
+  <div class="sheet center stagger">
+    <div class="stencil" style="margin-bottom:var(--s5)">The Keys</div>
+    <svg class="a-float" width="74" viewBox="0 0 80 168" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto var(--s6);display:block">
+      <circle cx="40" cy="36" r="29" stroke="var(--ink)" stroke-width="2.4"/>
+      <circle cx="40" cy="36" r="18" stroke="var(--draft-soft)" stroke-width="1.3"/>
+      <circle cx="40" cy="36" r="8" fill="var(--brass)" opacity="0.7"/>
+      <rect x="37.4" y="62" width="5.2" height="80" rx="2.2" fill="var(--ink)"/>
+      <rect x="37.4" y="104" width="15" height="5" rx="2" fill="var(--ink)"/>
+      <rect x="37.4" y="122" width="10" height="5" rx="2" fill="var(--ink)"/>
+      <rect x="37.4" y="138" width="13" height="5" rx="2" fill="var(--ink)"/>
+    </svg>
+    <p class="hand" style="font-size:var(--t-xl);line-height:1.95;color:var(--ink-soft);max-width:420px;margin:0 auto var(--s7)">
+      Before we begin, there's something you should know.<br><br>
+      This house isn't real.<br>Not yet.<br><br>
+      Nobody lives here.<br>Nobody owns it.<br><br>
+      It exists entirely inside my head.<br><br>
+      But if one day it becomes real,<br>I'd like you to be the first person with a key.
+    </p>
+    <button class="btn" id="btn-door"><span>Open the Door</span><span class="arrow">→</span></button>
+    <div class="folio">Sheet 01 · Keys</div>
+  </div>
+</section>
+
+<!-- ══════════ DOOR ══════════ -->
+<section id="screen-door" class="screen">
+  <div class="sheet center stagger">
+    <div class="stencil" style="margin-bottom:var(--s5)">The Front Door</div>
+    <div id="door-stage" style="position:relative;width:172px;height:262px;margin:0 auto var(--s7);perspective:1100px">
+      <div style="position:absolute;left:-3px;right:-3px;top:-30px;height:34px;border:2.4px solid var(--ink);border-bottom:none;border-radius:50% 50% 0 0/34px 34px 0 0"></div>
+      <div style="position:absolute;inset:0;border:2.4px solid var(--ink);background:repeating-linear-gradient(90deg,transparent 0 20px,rgba(80,112,140,0.05) 20px 21px)"></div>
+      <div id="door-panel" style="position:absolute;inset:0;background:linear-gradient(120deg,var(--paper-edge),var(--paper-fold));border:2px solid var(--ink);transform-origin:left center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+        <div style="width:58%;height:30%;border:1.4px solid var(--ink-faint);border-radius:2px"></div>
+        <div style="width:58%;height:22%;border:1.4px solid var(--ink-faint);border-radius:2px"></div>
+        <div style="position:absolute;right:18px;top:50%;width:11px;height:11px;border-radius:50%;background:var(--brass);box-shadow:0 1px 2px rgba(0,0,0,0.3)"></div>
+      </div>
+    </div>
+    <p class="hand" style="font-size:var(--t-xl);line-height:1.9;color:var(--ink-soft);max-width:460px;margin:0 auto var(--s7)">
+      Most people think homes are made from walls.<br>Bricks. Paint. Furniture.<br><br>
+      I used to think so too.<br><br>
+      Then I met a girl who somehow felt more like home<br>than any place I've ever lived.<br><br>
+      And now this house has a problem.<br>Every room somehow ends up looking a little bit like you.
+    </p>
+    <button class="btn" id="btn-enter"><span>Enter House</span><span class="arrow">→</span></button>
+    <div class="folio">Sheet 02 · Entry</div>
+  </div>
+</section>
+
+<!-- ══════════ BLUEPRINT ══════════ -->
+<section id="screen-blueprint" class="screen">
+  <div class="bp-wrap">
+    <header class="bp-header">
+      <div>
+        <div class="bp-title">The House We Haven't Built Yet</div>
+        <div class="bp-sub">Floor Plan · Tap a room to enter</div>
+        <div class="bp-progress" id="bp-progress"><span id="bp-progress-text">0 of 10 rooms seen</span><span class="bar"><i id="bp-progress-bar"></i></span></div>
+      </div>
+      <div class="bp-occupants">Future Occupants: The Bebus ♥️</div>
+    </header>
+    <div class="bp-canvas" id="bp-canvas">
+      <div class="bp-paper">
+        <svg class="house-plan" viewBox="0 0 760 900" xmlns="http://www.w3.org/2000/svg">
+          <!-- outer drawing frame (animated draw-in) -->
+          <rect class="pl-frame pl-draw" x="18" y="18" width="724" height="864" style="--len:3180"/>
+          <rect class="pl-frame" x="30" y="30" width="700" height="620" opacity="0.35"/>
+
+          <!-- dimension line (top) -->
+          <g>
+            <line class="pl-dim" x1="50" y1="46" x2="710" y2="46"/>
+            <line class="pl-dim" x1="50" y1="42" x2="50" y2="50"/>
+            <line class="pl-dim" x1="710" y1="42" x2="710" y2="50"/>
+            <text class="pl-dim-txt" x="380" y="42" text-anchor="middle">a home · approx. forever</text>
+          </g>
+
+          <!-- ───────── ROOMS ───────── -->
+          <g id="rooms">
+            <!-- TOP ROW -->
+            <g class="room-node" data-room="kitchen" role="button" tabindex="0" aria-label="The Kitchen">
+              <rect class="rn-fill" pathLength="100" x="50" y="62" width="190" height="148"/>
+              <text class="rn-label" x="145" y="120" text-anchor="middle">Kitchen</text>
+              <text class="rn-note"  x="145" y="142" text-anchor="middle">mine. obviously.</text>
+              <text class="rn-area"  x="145" y="196" text-anchor="middle">RM 02</text>
+            </g>
+            <g class="room-node" data-room="dining-table" role="button" tabindex="0" aria-label="The Dining Table">
+              <rect class="rn-fill" pathLength="100" x="240" y="62" width="210" height="148"/>
+              <text class="rn-label" x="345" y="120" text-anchor="middle">Dining Table</text>
+              <text class="rn-note"  x="345" y="142" text-anchor="middle">mostly for talking</text>
+              <text class="rn-area"  x="345" y="196" text-anchor="middle">RM 03</text>
+            </g>
+            <g class="room-node" data-room="study" role="button" tabindex="0" aria-label="The Study">
+              <rect class="rn-fill" pathLength="100" x="450" y="62" width="160" height="148"/>
+              <text class="rn-label" x="530" y="120" text-anchor="middle">The Study</text>
+              <text class="rn-note"  x="530" y="142" text-anchor="middle">CA · deadlines</text>
+              <text class="rn-area"  x="530" y="196" text-anchor="middle">RM 05</text>
+            </g>
+            <g class="room-node" data-room="camera-corner" role="button" tabindex="0" aria-label="The Camera Corner">
+              <rect class="rn-fill" pathLength="100" x="610" y="62" width="100" height="148"/>
+              <text class="rn-label" x="660" y="116" text-anchor="middle" style="font-size:10px">Camera</text>
+              <text class="rn-label" x="660" y="132" text-anchor="middle" style="font-size:10px">Corner</text>
+              <text class="rn-note"  x="660" y="156" text-anchor="middle" style="font-size:12px">existing.</text>
+              <text class="rn-area"  x="660" y="196" text-anchor="middle">RM 06</text>
+            </g>
+
+            <!-- MID ROW -->
+            <g class="room-node" data-room="living-room" role="button" tabindex="0" aria-label="The Living Room">
+              <rect class="rn-fill" pathLength="100" x="50" y="210" width="300" height="140"/>
+              <text class="rn-label" x="200" y="270" text-anchor="middle" style="font-size:14px">Living Room</text>
+              <text class="rn-note"  x="200" y="294" text-anchor="middle">sofa · debates · TV</text>
+              <text class="rn-area"  x="200" y="336" text-anchor="middle">RM 01</text>
+            </g>
+            <g class="room-node" data-room="bedroom" role="button" tabindex="0" aria-label="The Bedroom">
+              <rect class="rn-fill" pathLength="100" x="470" y="210" width="240" height="140"/>
+              <text class="rn-label" x="590" y="270" text-anchor="middle">The Bedroom</text>
+              <text class="rn-note"  x="590" y="294" text-anchor="middle">quiet</text>
+              <text class="rn-area"  x="590" y="336" text-anchor="middle">RM 09</text>
+            </g>
+
+            <!-- HALLWAY spine -->
+            <g class="room-node" data-room="hallway" role="button" tabindex="0" aria-label="The Hallway">
+              <rect class="rn-fill" pathLength="100" x="350" y="210" width="120" height="260"/>
+              <text class="rn-label" x="402" y="345" text-anchor="middle" transform="rotate(-90 402 345)">The Hallway</text>
+              <text class="rn-note"  x="426" y="345" text-anchor="middle" transform="rotate(-90 426 345)" style="font-size:12px">frames · futures</text>
+              <text class="rn-area"  x="410" y="452" text-anchor="middle">RM 07</text>
+            </g>
+
+            <!-- LOWER ROW -->
+            <g class="room-node" data-room="cabinet" role="button" tabindex="0" aria-label="The Memory Cabinet">
+              <rect class="rn-fill" pathLength="100" x="50" y="350" width="150" height="120"/>
+              <text class="rn-label" x="125" y="400" text-anchor="middle" style="font-size:10px">Memory</text>
+              <text class="rn-label" x="125" y="416" text-anchor="middle" style="font-size:10px">Cabinet</text>
+              <text class="rn-note"  x="125" y="440" text-anchor="middle" style="font-size:12px">locked drawers</text>
+              <text class="rn-area"  x="125" y="460" text-anchor="middle">RM 08</text>
+            </g>
+            <g class="room-node" data-room="balcony" role="button" tabindex="0" aria-label="The Balcony">
+              <rect class="rn-fill" pathLength="100" x="200" y="350" width="150" height="120"/>
+              <text class="rn-label" x="275" y="404" text-anchor="middle">Balcony</text>
+              <text class="rn-note"  x="275" y="426" text-anchor="middle" style="font-size:12px">stars · talks</text>
+              <text class="rn-area"  x="275" y="460" text-anchor="middle">RM 04</text>
+            </g>
+            <g class="room-node is-feature" data-room="rooftop" role="button" tabindex="0" aria-label="The Rooftop">
+              <rect class="rn-fill" pathLength="100" x="470" y="350" width="240" height="120"/>
+              <text class="rn-label" x="590" y="404" text-anchor="middle">The Rooftop ♥</text>
+              <text class="rn-note"  x="590" y="428" text-anchor="middle">where it ends · &amp; begins</text>
+              <text class="rn-area"  x="590" y="460" text-anchor="middle">RM 10</text>
+            </g>
+
+            <!-- NEW INTERIOR ROW 1 -->
+            <g class="room-node" data-room="entryway" role="button" tabindex="0" aria-label="The Entryway">
+              <rect class="rn-fill" pathLength="100" x="50" y="480" width="300" height="80"/>
+              <text class="rn-label" x="200" y="514" text-anchor="middle">The Entryway</text>
+              <text class="rn-note"  x="200" y="536" text-anchor="middle" style="font-size:12px">shoes · keys · home</text>
+              <text class="rn-area"  x="200" y="552" text-anchor="middle">RM 00</text>
+            </g>
+            <g class="room-node" data-room="reading-nook" role="button" tabindex="0" aria-label="The Reading Nook">
+              <rect class="rn-fill" pathLength="100" x="410" y="480" width="300" height="80"/>
+              <text class="rn-label" x="560" y="514" text-anchor="middle">The Reading Nook</text>
+              <text class="rn-note"  x="560" y="536" text-anchor="middle" style="font-size:12px">one shared chair</text>
+              <text class="rn-area"  x="560" y="552" text-anchor="middle">RM 11</text>
+            </g>
+
+            <!-- NEW INTERIOR ROW 2 -->
+            <g class="room-node" data-room="wardrobe" role="button" tabindex="0" aria-label="The Wardrobe">
+              <rect class="rn-fill" pathLength="100" x="50" y="570" width="300" height="80"/>
+              <text class="rn-label" x="200" y="604" text-anchor="middle">The Wardrobe</text>
+              <text class="rn-note"  x="200" y="626" text-anchor="middle" style="font-size:12px">your half · my hoodies</text>
+              <text class="rn-area"  x="200" y="642" text-anchor="middle">RM 13</text>
+            </g>
+            <g class="room-node" data-room="bathroom" role="button" tabindex="0" aria-label="The Bathroom">
+              <rect class="rn-fill" pathLength="100" x="410" y="570" width="300" height="80"/>
+              <text class="rn-label" x="560" y="604" text-anchor="middle">The Bathroom</text>
+              <text class="rn-note"  x="560" y="626" text-anchor="middle" style="font-size:12px">not romantic · still ours</text>
+              <text class="rn-area"  x="560" y="642" text-anchor="middle">RM 14</text>
+            </g>
+
+            <!-- OUTDOOR -->
+            <g class="room-node is-outdoor" data-room="garden" role="button" tabindex="0" aria-label="The Garden">
+              <rect class="rn-fill" pathLength="100" x="50" y="674" width="660" height="92"/>
+              <text class="rn-label" x="380" y="712" text-anchor="middle">The Garden</text>
+              <text class="rn-note"  x="380" y="734" text-anchor="middle" style="font-size:12px">things we keep alive, together</text>
+              <text class="rn-area"  x="380" y="756" text-anchor="middle">RM 12 · outside</text>
+              <g stroke="var(--sage)" stroke-width="1.4" fill="none" opacity="0.8">
+                <path d="M120 752 q -4 -10 -10 -12 M120 752 q 4 -8 10 -10 M120 752 v -14"/>
+                <path d="M210 754 q -4 -10 -10 -12 M210 754 q 4 -8 10 -10 M210 754 v -14"/>
+                <path d="M560 754 q -4 -10 -10 -12 M560 754 q 4 -8 10 -10 M560 754 v -14"/>
+                <path d="M640 752 q -4 -10 -10 -12 M640 752 q 4 -8 10 -10 M640 752 v -14"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- door swing arcs (technical detail) -->
+          <path class="pl-door" d="M 350 250 A 30 30 0 0 1 380 280"/>
+          <path class="pl-door" d="M 470 250 A 30 30 0 0 0 440 280"/>
+          <path class="pl-door" d="M 240 130 A 26 26 0 0 1 266 156"/>
+          <path class="pl-door" d="M 200 410 A 24 24 0 0 1 224 434"/>
+          <path class="pl-door" d="M 350 512 A 20 20 0 0 1 370 532"/>
+          <path class="pl-door" d="M 350 602 A 20 20 0 0 1 370 622"/>
+
+          <!-- completion stamp (revealed when every room is seen) -->
+          <g transform="translate(650,808)">
+            <g id="approved-stamp">
+              <circle cx="0" cy="0" r="44" fill="none" stroke="var(--terra)" stroke-width="2.5"/>
+              <circle cx="0" cy="0" r="37" fill="none" stroke="var(--terra)" stroke-width="1"/>
+              <text x="0" y="-7" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" letter-spacing="1.5" fill="var(--terra)">EVERY</text>
+              <text x="0" y="7" text-anchor="middle" font-family="var(--sans)" font-size="11" font-weight="700" letter-spacing="1.5" fill="var(--terra)">ROOM SEEN</text>
+              <text x="0" y="26" text-anchor="middle" font-family="Caveat,cursive" font-size="16" fill="var(--terra)">♥</text>
+            </g>
+          </g>
+
+          <!-- north arrow -->
+          <g transform="translate(722,706)">
+            <line x1="0" y1="-2" x2="0" y2="-26" stroke="var(--draft)" stroke-width="1"/>
+            <path d="M0,-30 L4,-22 L-4,-22 Z" fill="var(--draft)"/>
+            <text class="north" x="0" y="6" text-anchor="middle">N</text>
+          </g>
+
+          <!-- ───────── TITLE BLOCK ───────── -->
+          <g class="title-block" transform="translate(30,788)">
+            <rect class="tb-line" x="0" y="0" width="540" height="80" fill="var(--paper-warm)"/>
+            <line class="tb-line" x1="0" y1="0" x2="540" y2="0"/>
+            <line class="tb-line" x1="270" y1="0" x2="270" y2="80"/>
+            <line class="tb-line" x1="0" y1="40" x2="270" y2="40"/>
+            <line class="tb-line" x1="405" y1="0" x2="405" y2="80"/>
+
+            <text class="tb-key" x="12" y="16">Project</text>
+            <text class="tb-title" x="12" y="32">The House We Haven't Built Yet</text>
+            <text class="tb-key" x="12" y="56">Occupants</text>
+            <text class="tb-val" x="12" y="72">The Bebus ♥</text>
+
+            <text class="tb-key" x="282" y="16">Drawn by</text>
+            <text class="tb-val" x="282" y="32">H.</text>
+            <text class="tb-key" x="282" y="56">Scale</text>
+            <text class="tb-val" x="282" y="72">Not to scale</text>
+
+            <text class="tb-key" x="417" y="16">Sheet</text>
+            <text class="tb-title" x="417" y="36" style="font-size:18px">A-01</text>
+            <text class="tb-key" x="417" y="56">Status</text>
+            <text class="tb-val" id="tb-status" x="417" y="72" style="fill:var(--terra)">Imagined</text>
+          </g>
+        </svg>
+      </div>
+      <div class="bp-hint">drag to explore →</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LIVING ROOM ══════════ -->
+<section id="screen-living-room" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 01</span><span class="room-floor">Ground · East</span></div>
+    <h2 class="room-title">The Living Room</h2>
+    <div class="room-body tight">
+      <p>This room won't have many rules.</p>
+      <p>Some evenings we'll sit here after work.</p>
+      <p>Pretending we're about to watch a movie.</p>
+      <p>We won't.</p>
+      <p>We'll spend forty-five minutes deciding what to watch.</p>
+      <p>Then talk through half of it anyway.</p>
+      <p>Somehow that will still count as quality time.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">📺</span> what's on tonight</div>
+      <div class="egg-body">
+        <div class="tv">
+          <div class="tv-eyebrow">Continue Watching</div>
+          <div class="tv-show">Episode 1</div>
+          <div class="tv-bar"><i></i></div>
+          <div class="tv-foot">For the seventh consecutive week.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ KITCHEN ══════════ -->
+<section id="screen-kitchen" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 02</span><span class="room-floor">Ground · North</span></div>
+    <h2 class="room-title">The Kitchen</h2>
+    <div class="room-body tight">
+      <p>This kitchen belongs to me.</p>
+      <p>I claimed it early.</p>
+      <p>You can supervise.</p>
+      <p>You can steal ingredients.</p>
+      <p>You can distract the chef.</p>
+      <p>But we both know who's cooking.</p>
+      <p>Every great house needs a cook.</p>
+      <p>Fortunately for us,<br>we already found one.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">🍳</span> the recipe</div>
+      <div class="egg-body">
+        <div class="recipe">
+          <div class="recipe-title">Chef's Special</div>
+          <div class="recipe-step"><span class="recipe-num">Step 1</span><span class="recipe-txt">Trust me.</span></div>
+          <div class="recipe-step"><span class="recipe-num">Step 2</span><span class="recipe-txt">Trust me more.</span></div>
+          <div class="recipe-step"><span class="recipe-num">Step 3</span><span class="recipe-txt">Somehow it works.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DINING TABLE ══════════ -->
+<section id="screen-dining-table" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 03</span><span class="room-floor">Ground · Centre</span></div>
+    <h2 class="room-title">The Dining Table</h2>
+    <div class="room-body tight">
+      <p>Most people use dining tables for food.</p>
+      <p>Ours will mostly be used for conversations.</p>
+      <p>Life updates.</p>
+      <p>Future plans.</p>
+      <p>Random stories.</p>
+      <p>Unnecessary debates.</p>
+      <p>Emotional damage.</p>
+      <p>And occasionally dinner.</p>
+    </div>
+    <div style="text-align:center;margin-top:var(--s7)">
+      <svg width="320" viewBox="0 0 340 130" style="max-width:100%">
+        <ellipse cx="170" cy="58" rx="142" ry="42" fill="var(--paper-warm)" stroke="var(--ink)" stroke-width="1.6"/>
+        <line x1="78" y1="92" x2="78" y2="122" stroke="var(--ink)" stroke-width="1.6"/>
+        <line x1="262" y1="92" x2="262" y2="122" stroke="var(--ink)" stroke-width="1.6"/>
+        <circle cx="108" cy="58" r="22" fill="none" stroke="var(--draft-soft)" stroke-width="1"/>
+        <circle cx="108" cy="58" r="13" fill="none" stroke="var(--draft-faint)" stroke-width="0.8"/>
+        <circle cx="232" cy="58" r="22" fill="none" stroke="var(--draft-soft)" stroke-width="1"/>
+        <circle cx="232" cy="58" r="13" fill="none" stroke="var(--draft-faint)" stroke-width="0.8"/>
+        <text x="170" y="63" text-anchor="middle" font-family="Caveat,cursive" font-size="14" fill="var(--ink-faint)">mostly for talking</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BALCONY ══════════ -->
+<section id="screen-balcony" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 04</span><span class="room-floor">First · West</span></div>
+    <h2 class="room-title">The Balcony</h2>
+    <div class="sky" id="sky"><div class="sky-moon"></div><span class="shooting-star" id="shooting-star"></span><div class="sky-rail"></div></div>
+    <div class="room-body tight">
+      <p>This is where serious conversations accidentally happen.</p>
+      <p>We came outside for fresh air.</p>
+      <p>We stayed because neither of us wanted the conversation to end.</p>
+      <p>Some nights we'll say very little.</p>
+      <p>Some nights we'll solve the entire universe.</p>
+      <p>Neither outcome would surprise me.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">✦</span> about stars</div>
+      <div class="egg-body">
+        <p class="hand" style="text-align:center;line-height:1.9;color:var(--ink-soft)">
+          You know what I like about stars?<br><br>
+          They look closer than they are.<br><br>
+          Somehow that feels familiar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STUDY ══════════ -->
+<section id="screen-study" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 05</span><span class="room-floor">First · Library</span></div>
+    <h2 class="room-title">The Study</h2>
+    <div class="room-body tight">
+      <p>There'll be deadlines here.</p>
+      <p>Long work days.</p>
+      <p>Both will be working.</p>
+      <p>Stress.</p>
+      <p>Bad moods.</p>
+      <p>Good news.</p>
+      <p>And everything in between.</p>
+      <p>Life won't pause just because we're in love.</p>
+      <p>But I think we'll make a pretty good team.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">📚</span> current desk status</div>
+      <div class="egg-body">
+        <div class="statuslist">
+          <div class="statusrow"><span class="dot" style="background:var(--sage)"></span>One person working.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--draft)"></span>Other person annoying the other.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--terra-soft)"></span>Both hugging each other after a long day.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CAMERA CORNER ══════════ -->
+<section id="screen-camera-corner" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 06</span><span class="room-floor">Second · Corner</span></div>
+    <h2 class="room-title">The Camera Corner</h2>
+    <div class="viewfinder">
+      <span class="vf-corner tl"></span><span class="vf-corner tr"></span>
+      <span class="vf-corner bl"></span><span class="vf-corner br"></span>
+      <span class="vf-rec">REC</span><span class="vf-subj">SUBJECT: Bebu</span>
+      <span class="vf-time" id="vf-time">--:--:--</span>
+    </div>
+    <div class="room-body tight">
+      <p>There was a time when distance needed help.</p>
+      <p>So a camera appeared.</p>
+      <p>It was supposed to make the distance feel smaller.</p>
+      <p>Nobody expected it would become one of our favourite things.</p>
+      <p>Especially because the person being watched is usually doing absolutely nothing.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">📷</span> activity log</div>
+      <div class="egg-body">
+        <p class="hand-lg" style="text-align:center;padding:var(--s4) 0">Current Activity:<br><br><span style="color:var(--terra)">Existing.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HALLWAY ══════════ -->
+<section id="screen-hallway" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 07</span><span class="room-floor">Ground · Corridor</span></div>
+    <h2 class="room-title">The Hallway</h2>
+    <div class="frames">
+      <!-- Tip: type a caption between the frame-cap tags below to fill a frame -->
+      <div class="frame"><span class="frame-year">2027</span><span class="frame-cap"></span></div>
+      <div class="frame"><span class="frame-year">2028</span><span class="frame-cap"></span></div>
+      <div class="frame"><span class="frame-year">2029</span><span class="frame-cap"></span></div>
+      <div class="frame"><span class="frame-year">2030</span><span class="frame-cap"></span></div>
+      <div class="frame loading"><span class="frame-year">Loading…</span></div>
+    </div>
+    <div class="room-body tight">
+      <p>These frames are intentionally empty.</p>
+      <p>Not because there's nothing to put here.</p>
+      <p>Because we're still making them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MEMORY CABINET ══════════ -->
+<section id="screen-cabinet" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 08</span><span class="room-floor">Ground · Nook</span></div>
+    <h2 class="room-title">The Memory Cabinet</h2>
+    <div class="room-body" style="margin-bottom:var(--s5)">
+      <p>Some things don't fit in albums.<br>They go in here instead.</p>
+    </div>
+    <div class="cabinet"><div class="cabinet-grid" id="cabinet-grid"></div></div>
+    <p class="body-sm" style="text-align:center;margin-top:var(--s4)">Pull a drawer to open it.</p>
+  </div>
+</section>
+
+<!-- ══════════ BEDROOM ══════════ -->
+<section id="screen-bedroom" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger" style="text-align:center">
+    <div class="room-plate" style="justify-content:center"><span class="room-code">RM 09</span><span class="room-floor">First · Private</span></div>
+    <h2 class="room-title" style="margin-left:auto;margin-right:auto">The Bedroom</h2>
+    <div class="bedroom-mark">·  ·  ·</div>
+    <div class="room-body center tight">
+      <p>The funny thing about long distance is that it teaches you to dream about big moments.</p>
+      <p>Airports.</p>
+      <p>Train stations.</p>
+      <p>Reunions.</p>
+      <p>Countdowns.</p>
+      <p>But I don't think those will be my favourite part.</p>
+      <p>I think it'll be this.</p>
+    </div>
+    <div class="rule"></div>
+    <p class="hand-lg" style="font-size:var(--t-2xl);line-height:1.7;color:var(--ink)">Reaching for you.<br>And finding you there.<br>Every time.</p>
+  </div>
+</section>
+
+<!-- ══════════ ROOFTOP ══════════ -->
+<section id="screen-rooftop" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger" style="text-align:center">
+    <div class="room-plate" style="justify-content:center"><span class="room-code">RM 10</span><span class="room-floor">Top Floor</span></div>
+    <h2 class="room-title" style="margin-left:auto;margin-right:auto">The Rooftop</h2>
+
+    <div class="roof-scene">
+      <div class="roof-sky"></div>
+      <svg viewBox="0 0 300 230" xmlns="http://www.w3.org/2000/svg">
+        <rect x="44" y="108" width="212" height="112" fill="var(--paper-edge)" stroke="var(--ink)" stroke-width="1.6"/>
+        <polygon points="22,108 150,24 278,108" fill="var(--ink)"/>
+        <rect x="192" y="32" width="20" height="44" fill="var(--ink)"/>
+        <!-- smoke heart (curls up slowly after the windows light) -->
+        <path class="smoke-heart" id="smoke-heart" d="M202 17 C 192 8, 192 -1, 198 -1 C 200.5 -1, 202 1.5, 202 3 C 202 1.5, 203.5 -1, 206 -1 C 212 -1, 212 8, 202 17 Z" fill="var(--terra)"/>
+        <!-- smoke -->
+        <circle class="smoke" id="light-4" cx="202" cy="26" r="6" fill="#cdbfae"/>
+        <circle class="smoke" id="light-5" cx="208" cy="20" r="4" fill="#d8ccbb" style="animation-delay:.8s"/>
+        <circle class="smoke" id="light-6" cx="197" cy="16" r="3" fill="#e0d6c6" style="animation-delay:1.6s"/>
+        <!-- door -->
+        <rect x="132" y="160" width="38" height="60" rx="2" fill="var(--wood-dark)"/>
+        <circle cx="162" cy="190" r="3" fill="var(--brass)"/>
+        <!-- left window -->
+        <rect class="win-glow" id="light-1" x="60" y="124" width="46" height="38" rx="2" fill="var(--brass-soft)"/>
+        <rect x="60" y="124" width="46" height="38" rx="2" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+        <line x1="83" y1="124" x2="83" y2="162" stroke="var(--ink)" stroke-width="0.9"/>
+        <line x1="60" y1="143" x2="106" y2="143" stroke="var(--ink)" stroke-width="0.9"/>
+        <!-- right window -->
+        <rect class="win-glow" id="light-2" x="194" y="124" width="46" height="38" rx="2" fill="var(--brass-soft)"/>
+        <rect x="194" y="124" width="46" height="38" rx="2" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+        <line x1="217" y1="124" x2="217" y2="162" stroke="var(--ink)" stroke-width="0.9"/>
+        <line x1="194" y1="143" x2="240" y2="143" stroke="var(--ink)" stroke-width="0.9"/>
+        <!-- attic window -->
+        <rect class="win-glow" id="light-3" x="134" y="62" width="32" height="26" rx="2" fill="var(--brass-soft)"/>
+        <rect x="134" y="62" width="32" height="26" rx="2" fill="none" stroke="var(--paper)" stroke-width="1.1"/>
+        <line x1="150" y1="62" x2="150" y2="88" stroke="var(--paper)" stroke-width="0.8"/>
+        <line x1="14" y1="220" x2="286" y2="220" stroke="var(--ink-faint)" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <div class="room-body center tight">
+      <p>We haven't built any of this.</p>
+      <p>Not yet.</p>
+      <p>Maybe the furniture will be different.</p>
+      <p>Maybe the walls will be another colour.</p>
+      <p>Maybe the address will be somewhere neither of us expects.</p>
+      <p>But I think the important part stays the same.</p>
+    </div>
+    <div class="rule"></div>
+    <p class="hand-lg" style="font-size:var(--t-2xl);margin-bottom:var(--s6)">You.<br>Me.<br>And a life we get to build together.</p>
+
+    <p class="final-home">HOME.</p>
+    <p class="final-soon">Coming soon.</p>
+    <span class="final-heart a-heart">♥️</span>
+
+    <div class="board">
+      <div class="board-title">House Status</div>
+      <div class="board-row"><span class="board-key">Foundation</span><span class="board-val ok">Complete</span></div>
+      <div class="board-row"><span class="board-key">Walls</span><span class="board-val pend">Pending</span></div>
+      <div class="board-row"><span class="board-key">Furniture</span><span class="board-val pend">Pending</span></div>
+      <div class="board-row"><span class="board-key">Occupants</span><span class="board-val res">Reserved ♥️</span></div>
+      <div class="board-row"><span class="board-key">Days, so far</span><span class="board-val res" id="roof-days">—</span></div>
+      <p class="board-ps">Thank you for making an imaginary house feel surprisingly real.</p>
+    </div>
+
+    <div class="room-next">
+      <button class="btn-line" id="to-letter-from-roof">✉ &nbsp; There's one more thing</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LETTER ══════════ -->
+<section id="screen-letter" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger" style="text-align:center">
+    <div class="stencil" style="margin-bottom:var(--s2)">For your eyes only</div>
+    <h2 class="room-title" style="margin-left:auto;margin-right:auto">A Letter</h2>
+    <div class="envelope" id="envelope">
+      <div class="env-pocket"></div>
+      <div class="env-flap"></div>
+      <div class="env-seal">♥</div>
+    </div>
+    <p class="env-hint" id="env-hint">tap to open</p>
+    <div class="letter-paper" id="letter-paper">
+      <div class="letter-body" id="letter-body">
+        <span class="lw salut">Dear Bebu,</span>
+        <span class="lw gap"></span>
+        <span class="lw">The funny thing is that none of these rooms exist.</span>
+        <span class="lw gap"></span>
+        <span class="lw">But every object inside them does.</span>
+        <span class="lw gap"></span>
+        <span class="lw">The flowers.</span>
+        <span class="lw">The letters.</span>
+        <span class="lw">The receipts.</span>
+        <span class="lw">The wrappers.</span>
+        <span class="lw">The memories.</span>
+        <span class="lw gap"></span>
+        <span class="lw">We already started building this house a long time ago.</span>
+        <span class="lw gap"></span>
+        <span class="lw">We just didn't realise it.</span>
+        <span class="lw gap"></span>
+        <span class="lw sign">Love,</span>
+        <span class="lw gap-sm"></span>
+        <span class="lw sign">Your Favourite Chef,</span>
+        <span class="lw sign">Roommate,</span>
+        <span class="lw sign">Future Emergency Contact,</span>
+        <span class="lw sign">Designated Snack Provider,</span>
+        <span class="lw sign">And Occasional Human Heater</span>
+        <span class="lw gap-sm"></span>
+        <span class="lw sign heart">♥️</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ENTRYWAY ══════════ -->
+<section id="screen-entryway" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 00</span><span class="room-floor">Ground · Threshold</span></div>
+    <h2 class="room-title">The Entryway</h2>
+    <div class="room-body tight">
+      <p>This is where the day ends and we begin.</p>
+      <p>Two pairs of shoes by the door.</p>
+      <p>One of them always knocked over.</p>
+      <p>Keys that never make it to the hook.</p>
+      <p>And the three seconds before you see me,</p>
+      <p>which might be my favourite part of coming home.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">🔑</span> by the door</div>
+      <div class="egg-body">
+        <div class="statuslist">
+          <div class="statusrow"><span class="dot" style="background:var(--terra-soft)"></span>Your shoes: everywhere.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--draft)"></span>My shoes: also everywhere.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--ink-ghost)"></span>The hook: still empty.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ READING NOOK ══════════ -->
+<section id="screen-reading-nook" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 11</span><span class="room-floor">First · Quiet</span></div>
+    <h2 class="room-title">The Reading Nook</h2>
+    <div class="room-body tight">
+      <p>One chair. Somehow always shared.</p>
+      <p>You'll actually read.</p>
+      <p>I'll mostly watch you turn the pages.</p>
+      <p>We'll buy more books than we'll ever finish.</p>
+      <p>The unfinished ones still count.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">📖</span> currently reading</div>
+      <div class="egg-body">
+        <div class="statuslist">
+          <div class="statusrow"><span class="dot" style="background:var(--sage)"></span>Her: three books at once.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--draft)"></span>Him: the same page for a week.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--terra-soft)"></span>Both: perfectly content.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GARDEN ══════════ -->
+<section id="screen-garden" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 12</span><span class="room-floor">Outside</span></div>
+    <h2 class="room-title">The Garden</h2>
+    <div class="room-body tight">
+      <p>We'll probably kill the first few plants.</p>
+      <p>That's allowed.</p>
+      <p>We're still learning to keep things alive together.</p>
+      <p>But something always grows eventually.</p>
+      <p>It usually does.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">🌱</span> what's growing</div>
+      <div class="egg-body">
+        <div class="statuslist">
+          <div class="statusrow"><span class="dot" style="background:var(--terra-soft)"></span>Tomatoes: hopeful.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--sage)"></span>Basil: thriving.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--draft)"></span>That one succulent: immortal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WARDROBE ══════════ -->
+<section id="screen-wardrobe" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 13</span><span class="room-floor">First · Shared</span></div>
+    <h2 class="room-title">The Wardrobe</h2>
+    <div class="room-body tight">
+      <p>Two people. One closet. Somehow it works.</p>
+      <p>Your half keeps expanding.</p>
+      <p>My hoodies keep disappearing.</p>
+      <p>I've stopped looking for them.</p>
+      <p>They look better on you anyway.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">🧥</span> inventory</div>
+      <div class="egg-body">
+        <div class="statuslist">
+          <div class="statusrow"><span class="dot" style="background:var(--sage)"></span>Your side: growing.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--draft)"></span>My side: shrinking.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--terra-soft)"></span>The hoodie situation: unresolved.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BATHROOM ══════════ -->
+<section id="screen-bathroom" class="room-screen">
+  <button class="back-btn back-to-bp">← Blueprint</button>
+  <div class="room-sheet stagger">
+    <div class="room-plate"><span class="room-code">RM 14</span><span class="room-floor">Ground · Small</span></div>
+    <h2 class="room-title">The Bathroom</h2>
+    <div class="room-body tight">
+      <p>Not romantic. Still ours.</p>
+      <p>Toothbrushes leaning together.</p>
+      <p>Arguments about the water being too cold.</p>
+      <p>Singing where you think no one can hear.</p>
+      <p>I can hear. I never say anything.</p>
+    </div>
+    <div class="egg" data-egg>
+      <div class="egg-hint"><span class="pin">🪞</span> this morning</div>
+      <div class="egg-body">
+        <div class="statuslist">
+          <div class="statusrow"><span class="dot" style="background:var(--terra-soft)"></span>Hot water: not enough.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--draft)"></span>The mirror: fogged.</div>
+          <div class="statusrow"><span class="dot" style="background:var(--sage)"></span>The singing: surprisingly good.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DRAWER MODAL ══════════ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    <div class="modal-code" id="modal-code">Memory · RM 08</div>
+    <h3 class="modal-title" id="modal-title"></h3>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-counter" id="modal-counter"></div>
+  </div>
+</div>
+
+<!-- ══════════ SUNFLOWER ══════════ -->
+<div class="sunflower" id="sunflower" title="…" aria-label="A hidden sunflower">🌻</div>
+
+<!-- ══════════ AMBIENT TOGGLE ══════════ -->
+<button class="ambient-toggle" id="ambient-toggle" aria-label="Toggle ambient sound" title="Ambient sound">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path id="amb-icon" d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path id="amb-wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.5"/></svg>
+</button>
+
+</div><!-- /#app -->
+
+<script src="js/config.js"></script>
+<script src="js/state.js"></script>
+<script src="js/content.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/lock.js"></script>
+<script src="js/timeOfDay.js"></script>
+<script src="js/transitions.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/roomEngine.js"></script>
+<script src="js/cabinet.js"></script>
+<script src="js/notes.js"></script>
+<script src="js/rooftop.js"></script>
+<script src="js/letter.js"></script>
+<script src="js/ambient.js"></script>
+<script src="js/ceremony.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

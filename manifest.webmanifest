@@ -1,0 +1,16 @@
+{
+  "name": "The House We Haven't Built Yet",
+  "short_name": "Our House",
+  "description": "A house that doesn't exist yet. For Bebu.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E7DECC",
+  "theme_color": "#E7DECC",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

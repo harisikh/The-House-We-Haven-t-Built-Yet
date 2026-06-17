@@ -1,0 +1,50 @@
+/* ════════════════════════════════════
+   PRINT — the floor plan, on ONE page,
+   as a keepsake you can frame.
+════════════════════════════════════ */
+@media print {
+  @page { size: A4 landscape; margin: 12mm; }
+
+  html, body { background: #fff !important; height: auto !important; }
+  body::before, body::after, #tod-veil, #lamp,
+  .back-btn, .ambient-toggle, .sunflower, .tod-badge,
+  .bp-hint, .cer-skip, #ceremony, #modal-overlay, .opening-note { display: none !important; }
+
+  /* hide every screen … */
+  .screen, .room-screen {
+    position: static !important; transform: none !important;
+    height: auto !important; overflow: visible !important;
+    padding: 0 !important; margin: 0 !important;
+    display: none !important; opacity: 1 !important; visibility: visible !important;
+  }
+  /* … except the blueprint */
+  #screen-blueprint { display: block !important; }
+
+  .bp-wrap { min-height: 0 !important; display: block !important; }
+  .bp-header {
+    border-bottom: 1.4px solid #000 !important; box-shadow: none !important;
+    padding: 0 0 6px !important; margin-bottom: 8px !important;
+    display: flex !important;
+  }
+  .bp-header .bp-progress { display: none !important; }
+  .bp-occupants { color: #000 !important; }
+
+  .bp-canvas {
+    overflow: visible !important; padding: 0 !important;
+    display: block !important; height: auto !important;
+  }
+  .bp-paper {
+    box-shadow: none !important; min-width: 0 !important;
+    width: 100% !important; margin: 0 auto !important;
+    background-color: #fff !important; border: 1.2px solid #000 !important;
+  }
+  .bp-paper::before { display: none !important; }
+
+  .house-plan {
+    width: 100% !important; height: auto !important;
+    max-height: 168mm !important;     /* keep it on a single landscape page */
+  }
+  .rn-fill { stroke-dashoffset: 0 !important; }
+  .rn-label, .rn-note, .rn-area, .rn-check { opacity: 1 !important; }
+  .house-plan.complete #approved-stamp { opacity: 0.85 !important; }
+}

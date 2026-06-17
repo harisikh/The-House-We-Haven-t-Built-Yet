@@ -1,0 +1,284 @@
+/* ════════════════════════════════════════════════
+   ENHANCE — time of day · ceremony · progress ·
+   notes · ambient · per-room micro-moments
+════════════════════════════════════════════════ */
+
+/* ── TIME-OF-DAY veil (tints the desk, never the paper) ── */
+#tod-veil {
+  position: fixed; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: background 1.4s ease, opacity 1.4s ease;
+  background: transparent;
+}
+body.tod-morning   #tod-veil { background: linear-gradient(180deg, rgba(255,206,150,0.20), transparent 58%); }
+body.tod-afternoon #tod-veil { background: transparent; }
+body.tod-evening   #tod-veil { background: linear-gradient(0deg, rgba(214,132,66,0.20), transparent 55%),
+                                            linear-gradient(180deg, rgba(255,196,128,0.08), transparent 40%); }
+body.tod-night     #tod-veil { background: linear-gradient(180deg, rgba(34,44,78,0.30), rgba(18,22,42,0.42)); }
+body.tod-night     { --desk: #DAD0BC; }
+body.tod-night     #app { filter: saturate(0.96); }
+body.tod-night .sky-moon { box-shadow: 0 0 30px rgba(253,246,227,0.6); }
+body.tod-night .win-glow.lit { filter: drop-shadow(0 0 7px rgba(255,201,120,0.75)); }
+body.tod-morning .sky-moon { opacity: 0.55; }
+
+.tod-badge {
+  position: fixed;
+  top: clamp(14px,2.5vw,26px);
+  right: clamp(14px,2.5vw,26px);
+  z-index: 200;
+  font-family: var(--sans);
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-faint);
+  background: var(--paper);
+  border: 1.2px solid var(--paper-edge);
+  border-radius: 20px;
+  padding: 6px 13px;
+  box-shadow: var(--sh-sm);
+  display: flex; align-items: center; gap: 7px;
+  opacity: 0; transform: translateY(-6px);
+  transition: opacity var(--d-3), transform var(--d-3);
+  pointer-events: none;
+}
+.tod-badge.show { opacity: 1; transform: translateY(0); }
+.tod-badge .tod-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brass); }
+body.tod-morning .tod-dot { background: #E7A24B; }
+body.tod-evening .tod-dot { background: #C9764F; }
+body.tod-night   .tod-dot { background: #6E83B8; }
+
+/* ── CEREMONY (first open only) ── */
+#ceremony {
+  position: fixed; inset: 0; z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--desk);
+  background-image: radial-gradient(circle, var(--desk-line) 1.1px, transparent 1.2px);
+  background-size: 26px 26px;
+  transition: opacity 1s var(--e-soft), visibility 1s;
+}
+#ceremony.done { opacity: 0; visibility: hidden; }
+.cer-inner { position: relative; text-align: center; padding: clamp(44px,6vw,72px) clamp(52px,8vw,96px); }
+.cer-border { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.cer-frame { fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-dasharray: 1390; stroke-dashoffset: 1390; }
+#ceremony.run .cer-frame { animation: drawLine 1.9s var(--e-soft) 0.2s forwards; }
+.cer-content { position: relative; }
+.cer-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.6rem, 4.5vw, 2.8rem); line-height: 1.05;
+  color: var(--ink); opacity: 0;
+}
+#ceremony.run .cer-title { animation: fadeUp 1.1s var(--e-out) 0.7s both; }
+.cer-sub { font-family: var(--sans); font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--draft); margin-top: var(--s4); opacity: 0; }
+#ceremony.run .cer-sub { animation: fadeIn 1s ease 1.4s both; }
+.cer-stamp {
+  margin: var(--s6) auto 0;
+  width: 92px; height: 92px; border-radius: 50%;
+  border: 2.5px solid var(--terra);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--terra); font-family: var(--sans);
+  font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  transform: scale(2.4) rotate(-16deg); opacity: 0;
+}
+#ceremony.run .cer-stamp { animation: stampIn 0.5s var(--e-out) 2.2s both; }
+@keyframes stampIn { 0% { transform: scale(2.4) rotate(-16deg); opacity: 0; } 60% { opacity: 1; } 100% { transform: scale(1) rotate(-12deg); opacity: 1; } }
+.cer-skip {
+  position: absolute; bottom: -54px; left: 50%; transform: translateX(-50%);
+  font-family: var(--sans); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-ghost); background: none; border: none; cursor: pointer;
+  opacity: 0; transition: color var(--d-1);
+}
+#ceremony.run .cer-skip { animation: fadeIn 1s ease 2.4s both; }
+.cer-skip:hover { color: var(--terra); }
+
+/* ── BLUEPRINT: pencil cursor + living draw-in + visited + completion ── */
+.bp-paper { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M3 25l3.6-1L20 10.6 17.4 8 4 21.4z' fill='%23f8f3ea' stroke='%232c2419' stroke-width='1.3'/%3E%3Cpath d='M17 7.6l3.4 3.4 2-2-3.4-3.4z' fill='%23be965a' stroke='%232c2419' stroke-width='1.1'/%3E%3C/svg%3E") 3 25, crosshair; }
+.room-node { cursor: pointer; }
+
+/* living draw-in: each room outline strokes itself on, staggered, then label fades */
+.rn-fill { stroke-dasharray: 100; stroke-dashoffset: 100; }
+#screen-blueprint.active .rn-fill { animation: drawLine 0.9s var(--e-soft) forwards; }
+.rn-label, .rn-note, .rn-area { opacity: 0; }
+#screen-blueprint.active .rn-label,
+#screen-blueprint.active .rn-note,
+#screen-blueprint.active .rn-area { animation: fadeIn 0.7s ease forwards; }
+/* per-room stagger (scoped to #rooms so indices map correctly) */
+#rooms .room-node:nth-of-type(1) .rn-fill { animation-delay:0.30s } #rooms .room-node:nth-of-type(1) .rn-label,#rooms .room-node:nth-of-type(1) .rn-note,#rooms .room-node:nth-of-type(1) .rn-area{animation-delay:1.00s}
+#rooms .room-node:nth-of-type(2) .rn-fill { animation-delay:0.40s } #rooms .room-node:nth-of-type(2) .rn-label,#rooms .room-node:nth-of-type(2) .rn-note,#rooms .room-node:nth-of-type(2) .rn-area{animation-delay:1.09s}
+#rooms .room-node:nth-of-type(3) .rn-fill { animation-delay:0.50s } #rooms .room-node:nth-of-type(3) .rn-label,#rooms .room-node:nth-of-type(3) .rn-note,#rooms .room-node:nth-of-type(3) .rn-area{animation-delay:1.18s}
+#rooms .room-node:nth-of-type(4) .rn-fill { animation-delay:0.60s } #rooms .room-node:nth-of-type(4) .rn-label,#rooms .room-node:nth-of-type(4) .rn-note,#rooms .room-node:nth-of-type(4) .rn-area{animation-delay:1.27s}
+#rooms .room-node:nth-of-type(5) .rn-fill { animation-delay:0.70s } #rooms .room-node:nth-of-type(5) .rn-label,#rooms .room-node:nth-of-type(5) .rn-note,#rooms .room-node:nth-of-type(5) .rn-area{animation-delay:1.36s}
+#rooms .room-node:nth-of-type(6) .rn-fill { animation-delay:0.80s } #rooms .room-node:nth-of-type(6) .rn-label,#rooms .room-node:nth-of-type(6) .rn-note,#rooms .room-node:nth-of-type(6) .rn-area{animation-delay:1.45s}
+#rooms .room-node:nth-of-type(7) .rn-fill { animation-delay:0.90s } #rooms .room-node:nth-of-type(7) .rn-label,#rooms .room-node:nth-of-type(7) .rn-note,#rooms .room-node:nth-of-type(7) .rn-area{animation-delay:1.54s}
+#rooms .room-node:nth-of-type(8) .rn-fill { animation-delay:1.00s } #rooms .room-node:nth-of-type(8) .rn-label,#rooms .room-node:nth-of-type(8) .rn-note,#rooms .room-node:nth-of-type(8) .rn-area{animation-delay:1.63s}
+#rooms .room-node:nth-of-type(9) .rn-fill { animation-delay:1.10s } #rooms .room-node:nth-of-type(9) .rn-label,#rooms .room-node:nth-of-type(9) .rn-note,#rooms .room-node:nth-of-type(9) .rn-area{animation-delay:1.72s}
+#rooms .room-node:nth-of-type(10) .rn-fill { animation-delay:1.20s } #rooms .room-node:nth-of-type(10) .rn-label,#rooms .room-node:nth-of-type(10) .rn-note,#rooms .room-node:nth-of-type(10) .rn-area{animation-delay:1.81s}
+#rooms .room-node:nth-of-type(11) .rn-fill { animation-delay:1.30s } #rooms .room-node:nth-of-type(11) .rn-label,#rooms .room-node:nth-of-type(11) .rn-note,#rooms .room-node:nth-of-type(11) .rn-area{animation-delay:1.90s}
+#rooms .room-node:nth-of-type(12) .rn-fill { animation-delay:1.40s } #rooms .room-node:nth-of-type(12) .rn-label,#rooms .room-node:nth-of-type(12) .rn-note,#rooms .room-node:nth-of-type(12) .rn-area{animation-delay:1.99s}
+#rooms .room-node:nth-of-type(13) .rn-fill { animation-delay:1.50s } #rooms .room-node:nth-of-type(13) .rn-label,#rooms .room-node:nth-of-type(13) .rn-note,#rooms .room-node:nth-of-type(13) .rn-area{animation-delay:2.08s}
+#rooms .room-node:nth-of-type(14) .rn-fill { animation-delay:1.60s } #rooms .room-node:nth-of-type(14) .rn-label,#rooms .room-node:nth-of-type(14) .rn-note,#rooms .room-node:nth-of-type(14) .rn-area{animation-delay:2.17s}
+#rooms .room-node:nth-of-type(15) .rn-fill { animation-delay:1.70s } #rooms .room-node:nth-of-type(15) .rn-label,#rooms .room-node:nth-of-type(15) .rn-note,#rooms .room-node:nth-of-type(15) .rn-area{animation-delay:2.26s}
+
+/* visited check */
+.rn-check { font-family: var(--sans); font-size: 14px; font-weight: 700; fill: var(--terra); opacity: 0; transition: opacity var(--d-2); pointer-events: none; }
+.room-node.visited .rn-check { opacity: 0.92; }
+.room-node.is-feature.visited .rn-check { fill: var(--brass-soft); }
+
+
+/* outdoor garden node — static dashed boundary, no line-draw */
+.room-node.is-outdoor .rn-fill { fill: rgba(123,144,112,0.07); stroke: var(--sage); stroke-dasharray: 7 5; stroke-dashoffset: 0; }
+#screen-blueprint.active .room-node.is-outdoor .rn-fill { animation: none; stroke-dashoffset: 0; }
+.room-node.is-outdoor:hover .rn-fill { fill: var(--sage); stroke-dasharray: 7 5; }
+.room-node.is-outdoor:hover .rn-label,
+.room-node.is-outdoor:hover .rn-note { fill: var(--paper-warm); }
+.room-node.is-outdoor .rn-label { letter-spacing: 0.04em; }
+
+/* completion stamp */
+#approved-stamp { opacity: 0; transform-box: fill-box; transform-origin: center; transform: rotate(-11deg); transition: opacity 0.8s var(--e-out); }
+.house-plan.complete #approved-stamp { opacity: 0.85; animation: stampDrop 0.6s var(--e-out) both; }
+@keyframes stampDrop { 0% { transform: scale(2.2) rotate(-11deg); opacity: 0; } 60% { opacity: 0.85; } 100% { transform: scale(1) rotate(-11deg); opacity: 0.85; } }
+.bp-progress {
+  font-family: var(--sans); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-faint); margin-top: 4px; display: flex; align-items: center; gap: 8px;
+}
+.bp-progress .bar { width: 90px; height: 3px; background: var(--paper-edge); border-radius: 3px; overflow: hidden; }
+.bp-progress .bar > i { display: block; height: 100%; width: 0; background: var(--terra-soft); border-radius: 3px; transition: width var(--d-3) var(--e-out); }
+.bp-progress.complete { color: var(--terra); }
+
+/* ── WRITABLE NOTE (empty drawer) ── */
+.note-prompt { font-family: var(--hand); font-size: var(--t-xl); color: var(--ink-soft); margin-bottom: var(--s4); line-height: 1.6; }
+.note-area {
+  width: 100%; min-height: 120px; resize: vertical;
+  font-family: var(--hand); font-size: var(--t-xl); line-height: 1.6;
+  color: var(--ink); background: var(--paper-warm);
+  border: 1px dashed var(--draft-soft); border-radius: var(--r-sm);
+  padding: var(--s4);
+  background-image: repeating-linear-gradient(transparent 0 31px, var(--terra-faint) 31px 32px);
+}
+.note-area:focus { outline: none; border-color: var(--terra-soft); }
+.note-save { margin-top: var(--s4); display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
+.note-status { font-family: var(--sans); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-ghost); }
+.note-status.saved { color: var(--sage); }
+
+/* ── AMBIENT toggle ── */
+.ambient-toggle {
+  position: fixed; bottom: clamp(16px,3vw,28px); left: clamp(16px,3vw,28px);
+  z-index: 300;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--paper); border: 1.2px solid var(--paper-edge);
+  box-shadow: var(--sh-sm); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-faint); opacity: 0.5;
+  transition: opacity var(--d-2), color var(--d-2), transform var(--d-2);
+}
+.ambient-toggle:hover { opacity: 1; transform: scale(1.08); }
+.ambient-toggle.on { color: var(--terra); opacity: 1; }
+
+/* ── BALCONY shooting star ── */
+.shooting-star {
+  position: absolute; top: 16%; left: -10%;
+  width: 104px; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), #fff);
+  border-radius: 2px; opacity: 0;
+  transform: rotate(16deg);
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.6));
+  pointer-events: none;
+}
+.shooting-star.go { animation: shoot 2.8s cubic-bezier(0.3,0,0.2,1) forwards; }
+@keyframes shoot {
+  0%   { opacity: 0; transform: translate(0,0) rotate(16deg); }
+  10%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(360px, 132px) rotate(16deg); }
+}
+
+/* ── CAMERA live timestamp ── */
+.vf-time { position: absolute; bottom: 10px; right: 10px; font-family: var(--sans); font-size: 9px; letter-spacing: 0.06em; color: var(--terra); }
+
+/* ── ROOFTOP smoke heart ── */
+.smoke-heart { opacity: 0; transform-box: fill-box; transform-origin: center bottom; }
+.smoke-heart.go { animation: heartRise 4.8s ease-out forwards; }
+@keyframes heartRise {
+  0%   { opacity: 0; transform: translateY(2px) scale(0.45); }
+  20%  { opacity: 0.95; transform: translateY(-2px) scale(0.85); }
+  65%  { opacity: 0.9;  transform: translateY(-14px) scale(1); }
+  100% { opacity: 0; transform: translateY(-30px) scale(1.2); }
+}
+
+/* ── HALLWAY frame captions ── */
+.frame { overflow: visible; }
+.frame-cap {
+  position: absolute; left: 50%; bottom: -22px; transform: translateX(-50%) translateY(4px);
+  font-family: var(--hand); font-size: var(--t-base); color: var(--ink-faint);
+  white-space: nowrap; opacity: 0; transition: opacity var(--d-2), transform var(--d-2);
+  pointer-events: none;
+}
+.frame:hover .frame-cap { opacity: 1; transform: translateX(-50%) translateY(0); }
+.frame-cap:empty::before { content: '✎ write me'; color: var(--ink-ghost); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rn-fill { stroke-dashoffset: 0 !important; }
+  .rn-label, .rn-note, .rn-area { opacity: 1 !important; }
+}
+
+/* ── LAMP GLOW (follows cursor, strongest at night) ── */
+#lamp {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0; transition: opacity 1.2s ease;
+  background: radial-gradient(320px circle at var(--lx,50%) var(--ly,50%),
+              rgba(255,212,148,0.17), transparent 72%);
+}
+body.tod-evening #lamp { opacity: 0.55; }
+body.tod-night   #lamp { opacity: 1; }
+
+/* ── GENTLE PARALLAX on the paper ── */
+@media (pointer:fine) {
+  .sheet, .room-sheet, .bp-paper {
+    transform: translate(var(--par-x,0px), var(--par-y,0px));
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet, .room-sheet, .bp-paper { transform: none !important; }
+}
+
+/* ── OPENING personal note ── */
+.opening-note {
+  font-family: var(--hand);
+  font-size: var(--t-lg);
+  color: var(--terra);
+  margin-top: var(--s5);
+  opacity: 0;
+  transition: opacity 1.2s ease 0.6s;
+}
+.opening-note.show { opacity: 0.8; }
+
+/* ── LETTER writes itself in ── */
+.letter-body { display: block; }
+.lw {
+  display: block;
+  font-family: var(--hand);
+  font-size: var(--t-xl);
+  line-height: 1.85;
+  color: var(--ink-soft);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s var(--e-out), transform 0.6s var(--e-out);
+}
+.lw.show { opacity: 1; transform: none; }
+.lw.salut { font-family: var(--serif); font-style: italic; font-size: var(--t-2xl); color: var(--ink); margin-bottom: var(--s2); }
+.lw.sign  { font-size: var(--t-lg); color: var(--ink); }
+.lw.heart { font-size: 24px; }
+.lw.gap    { height: var(--s5); }
+.lw.gap-sm { height: var(--s3); }
+@media (prefers-reduced-motion: reduce) { .lw { opacity: 1 !important; transform: none !important; } }
+
+/* ── COMPLETION sparkles on the plan ── */
+.bp-spark {
+  font-size: 12px; fill: var(--terra-soft); opacity: 0;
+  transform-box: fill-box; transform-origin: center;
+  animation: sparkle 1.7s ease forwards;
+}
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0); }
+  40% { opacity: 1; transform: scale(1.25); }
+  100% { opacity: 0; transform: scale(0.6); }
+}

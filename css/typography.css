@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.08; }
+
+/* ── Display & headings ── */
+.display {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: var(--t-5xl);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.h-xl { font-family: var(--serif); font-weight: 300; font-size: var(--t-4xl); letter-spacing: -0.015em; }
+.h-lg { font-family: var(--serif); font-weight: 400; font-size: var(--t-3xl); letter-spacing: -0.01em; }
+.h-md { font-family: var(--serif); font-weight: 400; font-size: var(--t-2xl); }
+.h-sm { font-family: var(--serif); font-weight: 500; font-size: var(--t-xl); }
+
+.serif-italic { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+/* ── Body ── */
+.body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: var(--t-base);
+  line-height: 1.85;
+  color: var(--ink-soft);
+}
+.body-sm { font-family: var(--sans); font-weight: 300; font-size: var(--t-sm); line-height: 1.7; color: var(--ink-faint); }
+
+/* ── Hand ── */
+.hand    { font-family: var(--hand); font-weight: 500; font-size: var(--t-xl); line-height: 1.55; color: var(--ink-soft); }
+.hand-lg { font-family: var(--hand); font-weight: 600; font-size: var(--t-2xl); line-height: 1.5; color: var(--ink); }
+.hand-sm { font-family: var(--hand); font-weight: 500; font-size: var(--t-lg); line-height: 1.5; color: var(--ink-faint); }
+
+/* ── Drafting label (technical stencil voice — Inter, tracked out) ── */
+.stencil {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: var(--t-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--draft);
+}
+.stencil-ink { color: var(--ink-faint); }
+
+p + p { margin-top: var(--s4); }
+.tight p + p { margin-top: var(--s2); }
+
+::selection { background: var(--terra-faint); color: var(--ink); }
+
+@media (max-width: 680px) {
+  .display { font-size: var(--t-4xl); }
+  .h-xl { font-size: var(--t-3xl); }
+  .h-lg { font-size: var(--t-2xl); }
+  .stencil { letter-spacing: 0.18em; }
+}

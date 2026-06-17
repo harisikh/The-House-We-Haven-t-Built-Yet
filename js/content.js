@@ -1,0 +1,20 @@
+const CONTENT = {
+  drawers: [
+    { id: 'white-roses',        name: 'White Roses',           locked: false,
+      body: 'Most flowers fade.\n\nThese somehow became permanent.' },
+    { id: 'sunflower-bouquet',  name: 'Sunflower Bouquet',     locked: false,
+      body: 'Some flowers become memories\nbefore they become flowers.' },
+    { id: 'swiggy-receipt',     name: 'Swiggy Receipt',        locked: false,
+      body: 'Proof that ordinary days\ncan become important too.' },
+    { id: 'chocolate-wrapper',  name: 'Chocolate Wrapper',     locked: false,
+      body: 'Objectively rubbish.\n\nEmotionally priceless.' },
+    { id: 'letter-from-bebu',   name: 'Letter from Bebu',      locked: true,
+      unlocked: 'Some pieces of paper\nweigh more than they should.' },
+    { id: 'boarding-pass',      name: 'Boarding Pass',         locked: false,
+      body: 'Technically a travel document.\n\nEmotionally something else entirely.' },
+    { id: 'perfume',            name: 'Main Character Perfume',locked: false,
+      body: 'One of my better decisions.' },
+    { id: 'empty-drawer',       name: 'Empty Drawer',          locked: false,
+      body: 'Reserved for memories\nwe haven\u2019t made yet.' },
+  ],
+};

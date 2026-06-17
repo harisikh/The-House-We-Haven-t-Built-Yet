@@ -1,0 +1,168 @@
+/* ════════════════════════════════════
+   BLUEPRINT SCREEN
+════════════════════════════════════ */
+#screen-blueprint {
+  padding: 0;
+  align-items: stretch;
+}
+#screen-blueprint .bp-wrap {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header strip ── */
+.bp-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: clamp(16px,3vw,26px) clamp(18px,4vw,40px) clamp(12px,2vw,18px);
+  border-bottom: 1.4px solid var(--ink);
+  background: var(--paper);
+  box-shadow: var(--sh-sm);
+  position: relative;
+  z-index: 10;
+}
+.bp-header::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -5px;
+  height: 1px; background: var(--ink-ghost); opacity: 0.5;
+}
+.bp-title { font-family: var(--serif); font-weight: 400; font-size: clamp(1.1rem, 2.6vw, 1.6rem); color: var(--ink); line-height: 1.1; }
+.bp-sub { font-family: var(--sans); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--draft); margin-top: 3px; }
+.bp-occupants { font-family: var(--hand); font-size: var(--t-lg); color: var(--terra); white-space: nowrap; }
+
+/* ── Canvas ── */
+.bp-canvas {
+  flex: 1;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  padding: clamp(16px, 3vw, 40px);
+  position: relative;
+}
+.bp-canvas::-webkit-scrollbar { height: 8px; width: 8px; }
+.bp-canvas::-webkit-scrollbar-thumb { background: var(--ink-ghost); border-radius: 4px; }
+
+.bp-paper {
+  background-color: var(--paper-warm);
+  background-image:
+    linear-gradient(var(--draft-faint) 1px, transparent 1px),
+    linear-gradient(90deg, var(--draft-faint) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border: 1.4px solid var(--ink);
+  box-shadow: var(--sh-lg);
+  border-radius: 2px;
+  width: min(860px, 100%);
+  min-width: 580px;
+  margin: auto;
+  position: relative;
+}
+.bp-paper::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: var(--grain); opacity: 0.4; mix-blend-mode: multiply; pointer-events: none;
+}
+
+.house-plan { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* ── Plan line styles ── */
+.pl-frame   { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.pl-wall    { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; }
+.pl-wall-in { fill: none; stroke: var(--ink-soft); stroke-width: 1.6; stroke-linejoin: round; }
+.pl-door    { fill: none; stroke: var(--draft); stroke-width: 1; }
+.pl-dim     { stroke: var(--draft-soft); stroke-width: 0.8; }
+.pl-dim-txt { font-family: var(--sans); font-size: 9px; letter-spacing: 0.1em; fill: var(--draft); }
+.pl-grid-note { font-family: var(--hand); font-size: 13px; fill: var(--ink-faint); }
+
+/* ink draw-in (only the outer frame, for the "being drafted" feel) */
+.pl-draw {
+  stroke-dasharray: var(--len, 2600);
+  stroke-dashoffset: var(--len, 2600);
+}
+#screen-blueprint.active .pl-draw {
+  animation: drawLine 1.6s var(--e-soft) 0.2s forwards;
+}
+
+/* ── Room hotspots ── */
+.room-node { cursor: pointer; }
+.rn-fill {
+  fill: var(--paper-warm);
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  transition: fill var(--d-2) var(--e-soft);
+}
+.rn-hatch { opacity: 0; transition: opacity var(--d-2); }
+.rn-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--ink);
+  pointer-events: none;
+  transition: fill var(--d-2);
+}
+.rn-note {
+  font-family: var(--hand);
+  font-size: 14px;
+  fill: var(--ink-faint);
+  pointer-events: none;
+  transition: fill var(--d-2);
+}
+.rn-area {
+  font-family: var(--sans);
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  fill: var(--draft);
+  pointer-events: none;
+  transition: fill var(--d-2);
+}
+.room-node:hover .rn-fill { fill: var(--ink); }
+.room-node:hover .rn-label { fill: var(--paper-warm); }
+.room-node:hover .rn-note { fill: var(--brass-soft); }
+.room-node:hover .rn-area { fill: var(--draft-soft); }
+.room-node:hover .rn-hatch { opacity: 0.15; }
+
+.room-node:focus-visible { outline: none; }
+.room-node:focus-visible .rn-fill { stroke: var(--terra); stroke-width: 3; }
+
+/* special node (rooftop / letter) */
+.room-node.is-feature .rn-fill { fill: var(--ink); }
+.room-node.is-feature .rn-label { fill: var(--paper-warm); }
+.room-node.is-feature .rn-note { fill: var(--brass-soft); }
+.room-node.is-feature:hover .rn-fill { fill: var(--terra); }
+
+/* ── Title block (bottom-right of sheet, like real blueprints) ── */
+.title-block { font-family: var(--sans); }
+.tb-line { stroke: var(--ink); stroke-width: 1; }
+.tb-key { font-size: 7px; letter-spacing: 0.16em; text-transform: uppercase; fill: var(--ink-faint); }
+.tb-val { font-size: 9px; fill: var(--ink); font-weight: 500; }
+.tb-title { font-family: var(--serif); font-size: 13px; fill: var(--ink); }
+
+/* north arrow */
+.north { font-family: var(--sans); font-size: 9px; letter-spacing: 0.1em; fill: var(--draft); }
+
+/* drag hint */
+.bp-hint {
+  position: absolute;
+  bottom: 14px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--hand);
+  font-size: var(--t-base);
+  color: var(--ink-faint);
+  background: var(--paper);
+  padding: 4px 14px;
+  border-radius: 20px;
+  box-shadow: var(--sh-sm);
+  display: none;
+  z-index: 20;
+  pointer-events: none;
+}
+
+@media (max-width: 680px) {
+  .bp-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .bp-occupants { font-size: var(--t-base); }
+  .bp-hint { display: block; animation: nudge 1.8s ease-in-out infinite; }
+}
