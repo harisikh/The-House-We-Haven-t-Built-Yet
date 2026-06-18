@@ -16,6 +16,8 @@ const TRANSITIONS = {
     }
     if (id === 'balcony') { ROOM_ENGINE.makeStars(); ROOM_ENGINE.startBalcony(); }
     if (id === 'camera-corner') ROOM_ENGINE.startCameraClock();
+    if (id === 'rain-room') ROOM_ENGINE.startRain();
+    if (id === 'after-work') ROOM_ENGINE.startSteam();
     if (id === 'letter') LETTER.reset();
     if (id === 'cabinet') STATE.letterClicks = 0;
   },

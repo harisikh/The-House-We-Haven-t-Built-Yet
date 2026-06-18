@@ -1,9 +1,9 @@
 /* Tracks which rooms have been seen, marks them on the plan,
    and unlocks a quiet completion state once all are visited. */
 const PROGRESS = {
-  ROOMS: ['living-room','kitchen','dining-table','balcony','study',
-          'camera-corner','hallway','cabinet','bedroom','rooftop',
-          'entryway','reading-nook','garden','wardrobe','bathroom'],
+  ROOMS: ['entry-foyer','kitchen','dining-table','living-room','balcony','study',
+          'camera-corner','hallway','cabinet','reading-nook','washroom','laundry',
+          'after-work','rain-room','argument-bench','bedroom','garden','rooftop'],
   visited: new Set(),
   complete: false,
 

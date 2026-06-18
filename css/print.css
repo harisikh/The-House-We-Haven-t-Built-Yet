@@ -3,7 +3,7 @@
    as a keepsake you can frame.
 ════════════════════════════════════ */
 @media print {
-  @page { size: A4 landscape; margin: 12mm; }
+  @page { size: A4 landscape; margin: 10mm; }
 
   html, body { background: #fff !important; height: auto !important; }
   body::before, body::after, #tod-veil, #lamp,
@@ -42,7 +42,7 @@
 
   .house-plan {
     width: 100% !important; height: auto !important;
-    max-height: 168mm !important;     /* keep it on a single landscape page */
+    max-height: 180mm !important;
   }
   .rn-fill { stroke-dashoffset: 0 !important; }
   .rn-label, .rn-note, .rn-area, .rn-check { opacity: 1 !important; }

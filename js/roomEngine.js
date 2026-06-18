@@ -51,4 +51,26 @@ const ROOM_ENGINE = {
     this.cameraTimer = setInterval(tick, 1000);
   },
   stopCameraClock() { clearInterval(this.cameraTimer); },
+
+  startRain() {
+    const host = document.getElementById('rainfall');
+    if (!host || host.dataset.filled) return;
+    host.dataset.filled = '1';
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < 60; i++) {
+      const d = document.createElement('span');
+      d.className = 'raindrop';
+      const dur = 0.5 + Math.random() * 0.7;
+      d.style.cssText = `left:${Math.random()*100}%;animation-duration:${dur}s;animation-delay:${(-Math.random()*dur).toFixed(2)}s;opacity:${0.3+Math.random()*0.5}`;
+      frag.appendChild(d);
+    }
+    host.appendChild(frag);
+  },
+
+  startSteam() {
+    document.querySelectorAll('#screen-after-work .steam').forEach(el => {
+      el.classList.remove('go'); void el.getBBox; el.classList.add('go');
+    });
+  },
+
 };

@@ -14,7 +14,9 @@ const CONTENT = {
       body: 'Technically a travel document.\n\nEmotionally something else entirely.' },
     { id: 'perfume',            name: 'Main Character Perfume',locked: false,
       body: 'One of my better decisions.' },
+    { id: 'lost-found',         name: 'Lost & Found',          locked: false,
+      body: 'Things that belong to neither of us anymore:\nOne hair tie\nOne earring\nThree mystery receipts\nA pen cap\nA charger nobody recognizes.' },
     { id: 'empty-drawer',       name: 'Empty Drawer',          locked: false,
-      body: 'Reserved for memories\nwe haven\u2019t made yet.' },
+      body: 'Reserved.' },
   ],
 };

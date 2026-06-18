@@ -1,10 +1,10 @@
 /* Offline cache so the house can be "kept" — works once hosted (http/https). */
-const CACHE = 'house-v4';
+const CACHE = 'house-v10';
 const ASSETS = [
   './', 'index.html', 'manifest.webmanifest',
   'css/variables.css','css/typography.css','css/layout.css','css/animations.css',
-  'css/blueprint.css','css/rooms.css','css/enhance.css','css/print.css',
-  'js/config.js','js/state.js','js/content.js','js/storage.js','js/lock.js',
+  'css/blueprint.css','css/rooms.css','css/enhance.css','css/scene.css','css/print.css',
+  'js/config.js','js/state.js','js/content.js','js/objects.js','js/storage.js','js/lock.js',
   'js/timeOfDay.js','js/transitions.js','js/navigation.js','js/progress.js',
   'js/roomEngine.js','js/cabinet.js','js/notes.js','js/rooftop.js','js/letter.js',
   'js/ambient.js','js/ceremony.js','js/extras.js','js/app.js',

@@ -99,9 +99,22 @@ domain later if you want the address to be truly yours.
 THE MAP
 ════════════════════════════════════════
 Opening → Keys → Door → the Floor Plan (the hub).
-The plan now has 15 rooms, including The Entryway, The Reading Nook,
-The Wardrobe, The Bathroom, and The Garden (an outdoor area with a
-dashed property line).
+The blueprint is a wide architect's floor plan — you can see the whole
+home at once. Public rooms (Entry Foyer, Kitchen, Dining, Living,
+Balcony) run along the bottom; transition rooms (Study, Memory Cabinet,
+Hallway, Reading Nook, Camera Corner) through the centre; private rooms
+(Bedroom, Washroom, Laundry, After-Work, Rain Room, Argument Bench) up
+top; the Garden spans the full width, and the Rooftop is a terrace at
+top-centre. Rooms are numbered RM 01-18, drawn with furniture, windows
+and doors. As Bebu visits each room it warms up and its windows light;
+once all 18 are seen, an "Every Room Seen" stamp appears in the title
+block. The Wardrobe is an unnumbered walk-in off the Bedroom.
+All room words, stories, objects and the letter are unchanged.
+
+Each room is still a SCENE you explore - tap the objects in it (the TV,
+the lamp, the fridge, the telescope, the bathtub, the key bowl...) and
+each answers with its own line. A Final Screen closes the letter, and
+Lost & Found is a drawer in the Memory Cabinet.
 Every room on the plan is clickable. Most rooms hide a small
 "easter egg" — tap the dashed card inside a room to open it.
 
@@ -126,3 +139,18 @@ in the browser. To experience the first-open ceremony again, open
 the browser console and run:  localStorage.clear()
 
 Made with vanilla HTML, CSS & JavaScript. No frameworks. All yours.
+
+
+──────────────────────────────────────────
+MUSIC / HOME AUDIO
+──────────────────────────────────────────
+The speaker button (bottom-left) is OFF by default and never autoplays.
+
+To use a real homecoming song (e.g. "Khat — Navjot Ahuja"):
+  1. Put the audio file at:  house/assets/audio/homecoming.mp3
+  2. Open the site and tap the speaker button.
+It will loop softly and fade in.
+
+If no homecoming.mp3 is present, a warm original chord pad plays
+instead, so there is always gentle sound. (A copyrighted song can't be
+bundled in the gift for you — just drop your chosen file in that folder.)

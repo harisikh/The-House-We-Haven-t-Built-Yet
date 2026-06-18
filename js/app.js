@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   CABINET.init();
   ROOM_ENGINE.init();
   LETTER.init();
+  OBJECTS.build();
   EXTRAS.init(returning);
 
   // intro flow
@@ -50,6 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // rooftop → letter, sunflower → letter
   document.getElementById('to-letter-from-roof')?.addEventListener('click', () => NAV.go('letter'));
   document.getElementById('sunflower')?.addEventListener('click', () => NAV.go('letter'));
+
+  // washing machine: tap to start/stop
+  document.getElementById('washer')?.addEventListener('click', e => {
+    e.currentTarget.classList.toggle('lit');
+  });
+  // letter -> final screen
+  document.getElementById('to-final')?.addEventListener('click', () => NAV.go('final'));
 
   // Esc returns from a room to the blueprint (unless a drawer modal is open)
   document.addEventListener('keydown', e => {

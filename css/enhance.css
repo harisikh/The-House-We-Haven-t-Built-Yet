@@ -100,22 +100,26 @@ body.tod-night   .tod-dot { background: #6E83B8; }
 #screen-blueprint.active .rn-label,
 #screen-blueprint.active .rn-note,
 #screen-blueprint.active .rn-area { animation: fadeIn 0.7s ease forwards; }
-/* per-room stagger (scoped to #rooms so indices map correctly) */
-#rooms .room-node:nth-of-type(1) .rn-fill { animation-delay:0.30s } #rooms .room-node:nth-of-type(1) .rn-label,#rooms .room-node:nth-of-type(1) .rn-note,#rooms .room-node:nth-of-type(1) .rn-area{animation-delay:1.00s}
-#rooms .room-node:nth-of-type(2) .rn-fill { animation-delay:0.40s } #rooms .room-node:nth-of-type(2) .rn-label,#rooms .room-node:nth-of-type(2) .rn-note,#rooms .room-node:nth-of-type(2) .rn-area{animation-delay:1.09s}
-#rooms .room-node:nth-of-type(3) .rn-fill { animation-delay:0.50s } #rooms .room-node:nth-of-type(3) .rn-label,#rooms .room-node:nth-of-type(3) .rn-note,#rooms .room-node:nth-of-type(3) .rn-area{animation-delay:1.18s}
-#rooms .room-node:nth-of-type(4) .rn-fill { animation-delay:0.60s } #rooms .room-node:nth-of-type(4) .rn-label,#rooms .room-node:nth-of-type(4) .rn-note,#rooms .room-node:nth-of-type(4) .rn-area{animation-delay:1.27s}
-#rooms .room-node:nth-of-type(5) .rn-fill { animation-delay:0.70s } #rooms .room-node:nth-of-type(5) .rn-label,#rooms .room-node:nth-of-type(5) .rn-note,#rooms .room-node:nth-of-type(5) .rn-area{animation-delay:1.36s}
-#rooms .room-node:nth-of-type(6) .rn-fill { animation-delay:0.80s } #rooms .room-node:nth-of-type(6) .rn-label,#rooms .room-node:nth-of-type(6) .rn-note,#rooms .room-node:nth-of-type(6) .rn-area{animation-delay:1.45s}
-#rooms .room-node:nth-of-type(7) .rn-fill { animation-delay:0.90s } #rooms .room-node:nth-of-type(7) .rn-label,#rooms .room-node:nth-of-type(7) .rn-note,#rooms .room-node:nth-of-type(7) .rn-area{animation-delay:1.54s}
-#rooms .room-node:nth-of-type(8) .rn-fill { animation-delay:1.00s } #rooms .room-node:nth-of-type(8) .rn-label,#rooms .room-node:nth-of-type(8) .rn-note,#rooms .room-node:nth-of-type(8) .rn-area{animation-delay:1.63s}
-#rooms .room-node:nth-of-type(9) .rn-fill { animation-delay:1.10s } #rooms .room-node:nth-of-type(9) .rn-label,#rooms .room-node:nth-of-type(9) .rn-note,#rooms .room-node:nth-of-type(9) .rn-area{animation-delay:1.72s}
-#rooms .room-node:nth-of-type(10) .rn-fill { animation-delay:1.20s } #rooms .room-node:nth-of-type(10) .rn-label,#rooms .room-node:nth-of-type(10) .rn-note,#rooms .room-node:nth-of-type(10) .rn-area{animation-delay:1.81s}
-#rooms .room-node:nth-of-type(11) .rn-fill { animation-delay:1.30s } #rooms .room-node:nth-of-type(11) .rn-label,#rooms .room-node:nth-of-type(11) .rn-note,#rooms .room-node:nth-of-type(11) .rn-area{animation-delay:1.90s}
-#rooms .room-node:nth-of-type(12) .rn-fill { animation-delay:1.40s } #rooms .room-node:nth-of-type(12) .rn-label,#rooms .room-node:nth-of-type(12) .rn-note,#rooms .room-node:nth-of-type(12) .rn-area{animation-delay:1.99s}
-#rooms .room-node:nth-of-type(13) .rn-fill { animation-delay:1.50s } #rooms .room-node:nth-of-type(13) .rn-label,#rooms .room-node:nth-of-type(13) .rn-note,#rooms .room-node:nth-of-type(13) .rn-area{animation-delay:2.08s}
-#rooms .room-node:nth-of-type(14) .rn-fill { animation-delay:1.60s } #rooms .room-node:nth-of-type(14) .rn-label,#rooms .room-node:nth-of-type(14) .rn-note,#rooms .room-node:nth-of-type(14) .rn-area{animation-delay:2.17s}
-#rooms .room-node:nth-of-type(15) .rn-fill { animation-delay:1.70s } #rooms .room-node:nth-of-type(15) .rn-label,#rooms .room-node:nth-of-type(15) .rn-note,#rooms .room-node:nth-of-type(15) .rn-area{animation-delay:2.26s}
+/* per-room stagger (scoped to #rooms) */
+#rooms .room-node:nth-of-type(1) .rn-fill { animation-delay:0.28s } #rooms .room-node:nth-of-type(1) .rn-label,#rooms .room-node:nth-of-type(1) .rn-note,#rooms .room-node:nth-of-type(1) .rn-area{animation-delay:0.95s}
+#rooms .room-node:nth-of-type(2) .rn-fill { animation-delay:0.37s } #rooms .room-node:nth-of-type(2) .rn-label,#rooms .room-node:nth-of-type(2) .rn-note,#rooms .room-node:nth-of-type(2) .rn-area{animation-delay:1.02s}
+#rooms .room-node:nth-of-type(3) .rn-fill { animation-delay:0.45s } #rooms .room-node:nth-of-type(3) .rn-label,#rooms .room-node:nth-of-type(3) .rn-note,#rooms .room-node:nth-of-type(3) .rn-area{animation-delay:1.10s}
+#rooms .room-node:nth-of-type(4) .rn-fill { animation-delay:0.54s } #rooms .room-node:nth-of-type(4) .rn-label,#rooms .room-node:nth-of-type(4) .rn-note,#rooms .room-node:nth-of-type(4) .rn-area{animation-delay:1.17s}
+#rooms .room-node:nth-of-type(5) .rn-fill { animation-delay:0.62s } #rooms .room-node:nth-of-type(5) .rn-label,#rooms .room-node:nth-of-type(5) .rn-note,#rooms .room-node:nth-of-type(5) .rn-area{animation-delay:1.25s}
+#rooms .room-node:nth-of-type(6) .rn-fill { animation-delay:0.71s } #rooms .room-node:nth-of-type(6) .rn-label,#rooms .room-node:nth-of-type(6) .rn-note,#rooms .room-node:nth-of-type(6) .rn-area{animation-delay:1.32s}
+#rooms .room-node:nth-of-type(7) .rn-fill { animation-delay:0.79s } #rooms .room-node:nth-of-type(7) .rn-label,#rooms .room-node:nth-of-type(7) .rn-note,#rooms .room-node:nth-of-type(7) .rn-area{animation-delay:1.40s}
+#rooms .room-node:nth-of-type(8) .rn-fill { animation-delay:0.88s } #rooms .room-node:nth-of-type(8) .rn-label,#rooms .room-node:nth-of-type(8) .rn-note,#rooms .room-node:nth-of-type(8) .rn-area{animation-delay:1.48s}
+#rooms .room-node:nth-of-type(9) .rn-fill { animation-delay:0.96s } #rooms .room-node:nth-of-type(9) .rn-label,#rooms .room-node:nth-of-type(9) .rn-note,#rooms .room-node:nth-of-type(9) .rn-area{animation-delay:1.55s}
+#rooms .room-node:nth-of-type(10) .rn-fill { animation-delay:1.04s } #rooms .room-node:nth-of-type(10) .rn-label,#rooms .room-node:nth-of-type(10) .rn-note,#rooms .room-node:nth-of-type(10) .rn-area{animation-delay:1.62s}
+#rooms .room-node:nth-of-type(11) .rn-fill { animation-delay:1.13s } #rooms .room-node:nth-of-type(11) .rn-label,#rooms .room-node:nth-of-type(11) .rn-note,#rooms .room-node:nth-of-type(11) .rn-area{animation-delay:1.70s}
+#rooms .room-node:nth-of-type(12) .rn-fill { animation-delay:1.22s } #rooms .room-node:nth-of-type(12) .rn-label,#rooms .room-node:nth-of-type(12) .rn-note,#rooms .room-node:nth-of-type(12) .rn-area{animation-delay:1.77s}
+#rooms .room-node:nth-of-type(13) .rn-fill { animation-delay:1.30s } #rooms .room-node:nth-of-type(13) .rn-label,#rooms .room-node:nth-of-type(13) .rn-note,#rooms .room-node:nth-of-type(13) .rn-area{animation-delay:1.85s}
+#rooms .room-node:nth-of-type(14) .rn-fill { animation-delay:1.39s } #rooms .room-node:nth-of-type(14) .rn-label,#rooms .room-node:nth-of-type(14) .rn-note,#rooms .room-node:nth-of-type(14) .rn-area{animation-delay:1.92s}
+#rooms .room-node:nth-of-type(15) .rn-fill { animation-delay:1.47s } #rooms .room-node:nth-of-type(15) .rn-label,#rooms .room-node:nth-of-type(15) .rn-note,#rooms .room-node:nth-of-type(15) .rn-area{animation-delay:2.00s}
+#rooms .room-node:nth-of-type(16) .rn-fill { animation-delay:1.56s } #rooms .room-node:nth-of-type(16) .rn-label,#rooms .room-node:nth-of-type(16) .rn-note,#rooms .room-node:nth-of-type(16) .rn-area{animation-delay:2.08s}
+#rooms .room-node:nth-of-type(17) .rn-fill { animation-delay:1.64s } #rooms .room-node:nth-of-type(17) .rn-label,#rooms .room-node:nth-of-type(17) .rn-note,#rooms .room-node:nth-of-type(17) .rn-area{animation-delay:2.15s}
+#rooms .room-node:nth-of-type(18) .rn-fill { animation-delay:1.73s } #rooms .room-node:nth-of-type(18) .rn-label,#rooms .room-node:nth-of-type(18) .rn-note,#rooms .room-node:nth-of-type(18) .rn-area{animation-delay:2.22s}
+#rooms .room-node:nth-of-type(19) .rn-fill { animation-delay:1.81s } #rooms .room-node:nth-of-type(19) .rn-label,#rooms .room-node:nth-of-type(19) .rn-note,#rooms .room-node:nth-of-type(19) .rn-area{animation-delay:2.30s}
 
 /* visited check */
 .rn-check { font-family: var(--sans); font-size: 14px; font-weight: 700; fill: var(--terra); opacity: 0; transition: opacity var(--d-2); pointer-events: none; }
