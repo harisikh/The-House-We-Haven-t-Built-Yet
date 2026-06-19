@@ -6,11 +6,15 @@ const PROGRESS = {
           'after-work','rain-room','argument-bench','bedroom','garden','rooftop'],
   visited: new Set(),
   complete: false,
+  celebrated: false,
+  pendingHighlight: null,
+  _winMapped: false,
 
   load() {
     const arr = STORE.getJSON('visited', []);
     this.visited = new Set(arr.filter(r => this.ROOMS.includes(r)));
     this.complete = STORE.get('complete', '0') === '1';
+    this.celebrated = STORE.get('celebrated', '0') === '1';
   },
 
   mark(room) {
@@ -18,6 +22,8 @@ const PROGRESS = {
     if (!this.visited.has(room)) {
       this.visited.add(room);
       STORE.setJSON('visited', [...this.visited]);
+      // remember it so the plan can warm this room to life when she returns
+      this.pendingHighlight = room;
     }
     this.render();
     if (this.visited.size === this.ROOMS.length && !this.complete) {
@@ -43,6 +49,8 @@ const PROGRESS = {
         node.appendChild(t);
       }
     });
+    // the house fills with light — exterior windows of lived-in rooms glow warm
+    this.lightWindows();
     // progress meter
     const n = this.visited.size, total = this.ROOMS.length;
     const txt = document.getElementById('bp-progress-text');
@@ -53,15 +61,53 @@ const PROGRESS = {
     if (wrap) wrap.classList.toggle('complete', n >= total);
   },
 
+  // Map each exterior window to the room it borders (once), then light the
+  // windows of every room she's lived in. The plan glows on, room by room.
+  lightWindows() {
+    const wins = document.querySelectorAll('.wall-extras .pl-win');
+    if (!wins.length) return;
+    if (!this._winMapped) {
+      const rooms = [...document.querySelectorAll('.room-node[data-room]')].map(node => {
+        const r = node.querySelector('.rn-fill');
+        const room = node.getAttribute('data-room');
+        // garden/rooftop have no exterior glazing of their own
+        if (!r || room === 'garden' || room === 'rooftop') return null;
+        return { room,
+          x: +r.getAttribute('x'), y: +r.getAttribute('y'),
+          w: +r.getAttribute('width'), h: +r.getAttribute('height') };
+      }).filter(Boolean);
+      wins.forEach(w => {
+        const g = w.querySelector('.glass') || w.querySelector('line');
+        if (!g) return;
+        const mx = (parseFloat(g.getAttribute('x1')) + parseFloat(g.getAttribute('x2'))) / 2;
+        const my = (parseFloat(g.getAttribute('y1')) + parseFloat(g.getAttribute('y2'))) / 2;
+        let best = null, bd = Infinity;
+        rooms.forEach(rm => {
+          const cx = Math.max(rm.x, Math.min(mx, rm.x + rm.w));
+          const cy = Math.max(rm.y, Math.min(my, rm.y + rm.h));
+          const d = Math.hypot(mx - cx, my - cy);
+          if (d < bd) { bd = d; best = rm; }
+        });
+        if (best && bd < 24) w.setAttribute('data-win-room', best.room);
+      });
+      this._winMapped = true;
+    }
+    wins.forEach(w => {
+      const room = w.getAttribute('data-win-room');
+      if (room) w.classList.toggle('lit', this.visited.has(room));
+    });
+  },
+
   onComplete() {
     this.complete = true;
     STORE.set('complete', '1');
-    const plan = document.querySelector('.house-plan');
-    if (plan) plan.classList.add('complete');
     const status = document.getElementById('tb-status');
     if (status) status.textContent = 'Under Construction';
     this.render();
-    this.sparkle();
+    // The house finishes the moment she steps into the last room — but she's
+    // standing *inside* it, not looking at the plan. So we don't celebrate now;
+    // refresh() throws the stamp + sparkles the next time the plan is in view,
+    // guaranteeing she actually witnesses the house become real.
   },
 
   // a soft scatter of sketched sparkles when the plan is finished
@@ -87,9 +133,30 @@ const PROGRESS = {
     this.render();
     if (this.complete) {
       const plan = document.querySelector('.house-plan');
-      if (plan) plan.classList.add('complete');
+      if (plan) plan.classList.add('complete');   // stamp settles in
       const status = document.getElementById('tb-status');
       if (status) status.textContent = 'Under Construction';
+      // the one and only celebration — fired the first time the finished plan
+      // is actually on screen, then never again
+      if (!this.celebrated) {
+        this.celebrated = true;
+        STORE.set('celebrated', '1');
+        setTimeout(() => this.sparkle(), 520);
+      }
+    }
+    // warm the room she just lived in, so returning to the plan feels like the
+    // house quietly coming alive behind her
+    if (this.pendingHighlight) {
+      const room = this.pendingHighlight;
+      this.pendingHighlight = null;
+      const node = document.querySelector(`.room-node[data-room="${room}"]`);
+      if (node) {
+        // wait for the plan's ink-in to settle, then let this one room glow
+        setTimeout(() => {
+          node.classList.add('just-seen');
+          setTimeout(() => node.classList.remove('just-seen'), 1800);
+        }, 650);
+      }
     }
   },
 };

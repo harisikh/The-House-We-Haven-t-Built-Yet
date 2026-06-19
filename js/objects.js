@@ -28,14 +28,14 @@ const OBJECTS = {
     ],
     'kitchen': [
       { type: 'fridge', name: 'Fridge', effect: 'lit', note: 'Contains:\nLeftovers · Sauces · Questionable experiments\nAnd snacks that mysteriously belong to Bebu.' },
-      { type: 'spice-rack', name: 'Spice Rack', note: 'Official Recipe\nStep 1 — Trust me.\nStep 2 — Trust me more.\nStep 3 — Somehow it works.' },
+      { type: 'spice-rack', name: 'Spice Rack', note: 'Official Recipe\nStep 1. Trust me.\nStep 2. Trust me more.\nStep 3. Somehow it works.' },
     ],
     'balcony': [
       { type: 'telescope', name: 'Telescope', effect: 'stars', note: 'You know what I like about stars?\nThey look closer than they are.\nSomehow that feels familiar.' },
       { type: 'hanging-chair', name: 'Hanging Chair', note: 'Official seat of overthinking.' },
     ],
     'study': [
-      { type: 'desk', name: 'Desk', note: 'Current Status —\nOne person working.\nOther person annoying the other.\nBoth hugging each other after a long day.' },
+      { type: 'desk', name: 'Desk', note: 'Current Status:\nOne person working.\nOther person annoying the other.\nBoth hugging each other after a long day.' },
       { type: 'desk-lamp', name: 'Desk Lamp', effect: 'lit', note: 'Powered primarily by determination.' },
     ],
     'camera-corner': [

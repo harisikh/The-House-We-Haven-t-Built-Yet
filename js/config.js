@@ -1,7 +1,7 @@
 const CONFIG = {
   // true  → whole house is open (review mode)
   // false → locked until the release date below
-  PREVIEW_MODE: false,
+  PREVIEW_MODE: true,
 
   // 27 June 2026, 00:00, Asia/Kolkata (+05:30)
   UNLOCK_DATE: new Date('2026-06-27T00:00:00+05:30'),

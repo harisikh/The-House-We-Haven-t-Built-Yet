@@ -126,6 +126,43 @@ body.tod-night   .tod-dot { background: #6E83B8; }
 .room-node.visited .rn-check { opacity: 0.92; }
 .room-node.is-feature.visited .rn-check { fill: var(--brass-soft); }
 
+/* a room she's just lived in warms to life as she returns to the plan —
+   a one-time glow + a check that lands, the house quietly filling in behind her */
+.room-node.just-seen { animation: justSeenGlow 1.7s var(--e-soft) both; }
+@keyframes justSeenGlow {
+  0%   { filter: drop-shadow(0 0 0 rgba(174,82,50,0)); }
+  35%  { filter: drop-shadow(0 0 11px rgba(174,82,50,0.5)); }
+  100% { filter: drop-shadow(0 0 0 rgba(174,82,50,0)); }
+}
+.room-node.just-seen .rn-check {
+  transform-box: fill-box; transform-origin: center;
+  animation: checkLand 0.66s var(--e-out) 0.55s both;
+}
+@keyframes checkLand {
+  0%   { opacity: 0; transform: scale(0.4); }
+  55%  { opacity: 0.92; transform: scale(1.22); }
+  100% { opacity: 0.92; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .room-node.just-seen { animation: none !important; }
+  .room-node.just-seen .rn-check { animation: none !important; }
+}
+
+/* exterior windows fill with warm light once their room has been lived in —
+   the plan literally lighting up, one window at a time. (mapped in progress.js) */
+.wall-extras .pl-win line  { transition: stroke .7s var(--e-soft); }
+.wall-extras .pl-win .glass { transition: stroke .7s var(--e-soft), stroke-width .7s var(--e-soft); }
+.wall-extras .pl-win.lit line  { stroke: var(--brass); }
+.wall-extras .pl-win.lit .glass {
+  stroke: var(--brass-soft); stroke-width: 2.2;
+  filter: drop-shadow(0 0 3px rgba(188,150,90,0.55));
+}
+body.tod-evening .wall-extras .pl-win.lit .glass { filter: drop-shadow(0 0 4px rgba(214,150,80,0.70)); }
+body.tod-night   .wall-extras .pl-win.lit .glass { stroke: #F2C879; filter: drop-shadow(0 0 6px rgba(255,201,120,0.85)); }
+@media (prefers-reduced-motion: reduce) {
+  .wall-extras .pl-win line, .wall-extras .pl-win .glass { transition: none !important; }
+}
+
 
 /* outdoor garden node — static dashed boundary, no line-draw */
 .room-node.is-outdoor .rn-fill { fill: rgba(123,144,112,0.07); stroke: var(--sage); stroke-dasharray: 7 5; stroke-dashoffset: 0; }

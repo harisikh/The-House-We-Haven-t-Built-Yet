@@ -199,7 +199,7 @@
   cursor: pointer;
   text-align: center;
   overflow: hidden;
-  transition: transform var(--d-2) var(--e-out), box-shadow var(--d-2);
+  transition: transform var(--d-2) var(--e-drawer), box-shadow var(--d-2);
 }
 .drawer::after {
   content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
@@ -233,7 +233,7 @@
   max-width: 420px; width: 100%;
   max-height: 80vh; overflow-y: auto;
   transform: translateY(20px) scale(0.96);
-  transition: transform var(--d-3) var(--e-spring);
+  transition: transform var(--d-3) var(--e-drawer);
 }
 .modal::before { content: ''; position: absolute; top: 18px; bottom: 18px; left: 30px; width: 1px; background: var(--terra-faint); }
 .modal-overlay.open .modal { transform: translateY(0) scale(1); }
@@ -243,9 +243,10 @@
   border: 1.2px solid var(--paper-edge); background: var(--paper-warm);
   cursor: pointer; font-size: 14px; color: var(--ink-faint);
   display: flex; align-items: center; justify-content: center;
-  transition: all var(--d-1);
+  transition: color var(--d-1) var(--e-out), border-color var(--d-1) var(--e-out), transform var(--d-press) var(--e-out);
 }
 .modal-close:hover { color: var(--terra); border-color: var(--terra-soft); }
+.modal-close:active { transform: scale(0.9); }
 .modal-code { font-family: var(--sans); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--draft); }
 .modal-title { font-family: var(--serif); font-size: var(--t-2xl); font-weight: 400; color: var(--ink); margin: 4px 0 var(--s5); }
 .modal-body { font-family: var(--hand); font-size: var(--t-xl); line-height: 1.75; color: var(--ink-soft); }
@@ -325,7 +326,7 @@
   clip-path: polygon(0 0, 100% 0, 50% 72%);
   border-bottom: 1.5px solid var(--ink-soft);
   transform-origin: top;
-  transition: transform var(--d-3) var(--e-out), clip-path var(--d-3) var(--e-out);
+  transition: transform var(--d-3) var(--e-drawer), clip-path var(--d-3) var(--e-drawer);
   z-index: 3;
 }
 .env-pocket { position: absolute; inset: 0; clip-path: polygon(0 28%, 50% 78%, 100% 28%, 100% 100%, 0 100%); background: linear-gradient(170deg, var(--paper), var(--paper-edge)); }
@@ -339,7 +340,7 @@
   transition: transform var(--d-2) var(--e-spring), opacity var(--d-1);
 }
 .envelope.open .env-flap { transform: rotateX(-170deg); clip-path: polygon(0 0, 100% 0, 50% 72%); }
-.envelope.open .env-seal { transform: translate(-50%,-50%) scale(0); opacity: 0; }
+.envelope.open .env-seal { transform: translate(-50%,-50%) scale(0.3); opacity: 0; }
 .env-hint { font-family: var(--hand); font-size: var(--t-base); color: var(--ink-ghost); text-align: center; }
 
 .letter-paper {

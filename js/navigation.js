@@ -3,6 +3,9 @@ const NAV = {
     const prev = STATE.current;
     if (prev && prev !== id) STATE.history.push(prev);
 
+    // forward motion: step deeper in (incoming rises from below — the default)
+    document.body.classList.remove('nav-back');
+
     document.querySelectorAll('.screen.active, .room-screen.active')
       .forEach(el => el.classList.remove('active'));
 
@@ -27,6 +30,8 @@ const NAV = {
     const prev = STATE.history.pop();
     if (prev) {
       const wasRoom = STATE.current;
+      // backward motion: the room rises away, the overview settles down from above
+      document.body.classList.add('nav-back');
       document.querySelectorAll('.screen.active, .room-screen.active')
         .forEach(el => el.classList.remove('active'));
       STATE.current = prev;
